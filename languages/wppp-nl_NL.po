@@ -1,0 +1,86 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WooCommerce Products Per Page 1.0.1\n"
+"POT-Creation-Date: 2014-03-15 14:13+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: Jeroen Sormani <jeroen.sormani@gmail.com>\n"
+"Language: Nederlands\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.5\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: /Users/Jeroen/plugins/woocommerce-products-per-page/"
+"trunk/\n"
+"X-Poedit-SearchPath-0: /Users/Jeroen/plugins/woocommerce-products-per-page/"
+"trunk\n"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:27
+msgid "Dropdown location"
+msgstr "Dropdown locatie"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:35
+msgid "List of dropdown options"
+msgstr "Lijst van dropdown opties"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:43
+msgid "Default products per page"
+msgstr "Standaard aantal producten per pagina"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:51
+msgid "Shop columns"
+msgstr "Webshop kolommen"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:59
+msgid "First category page"
+msgstr "Eerste categorie pagina"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:73
+msgid "WooCommerce Products Per Page"
+msgstr "WooCommerce Products Per Page"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:92
+msgid "Top"
+msgstr "Boven"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:93
+msgid "Bottom"
+msgstr "Onder"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:94
+msgid "Top/Bottom"
+msgstr "Boven/Onder"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:95
+msgid "None"
+msgstr "Geen"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:107
+msgid "Seperated by spaces <em>(-1 for all products)</em>"
+msgstr "Gescheiden door spaties <em>(-1 voor alle producten)</em>"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:118
+msgid "-1 for all products"
+msgstr "-1 voor alle producten"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:140
+msgid ""
+"When checked and a new number of PPP is selected, the visitor will be send "
+"to the first page of the product category"
+msgstr ""
+"Wanneer aangevinkt en er een nieuw nummer PPP gekozen wordt, zal de bezoeker "
+"naar de eerste pagina van de category gestuurd worden"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:187
+msgid "Configure the WooCommerce Product Per Page settings here."
+msgstr "Configureer WooCommerce Products Per Page instellingen hier."
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/objects/wppp-dropdown.php:49
+#, php-format
+msgid "%s products per page"
+msgstr "%s producten per pagina"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/objects/wppp-dropdown.php:50
+msgid "All"
+msgstr "Alle"
