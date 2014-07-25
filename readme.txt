@@ -44,8 +44,11 @@ Options like:
 == Changelog ==
 
 = 1.1.0 =
-* Rewrote enitre plugin
-* Compatible with coding standards
+* Complete plugin rewrite
+* Added setting for HTTP method (defaults to POST)
+* Easier use in themes/templates
+* Fix - bug with product tags
+* Removed stylesheet (was just one line :o)
 
 = 1.0.10 =
 * Fix - Notices in debug mode
