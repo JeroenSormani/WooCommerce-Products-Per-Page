@@ -180,7 +180,7 @@ class Woocommerce_Products_Per_Page {
 			'productsPerPage' => $ppp_default,
 			'default_ppp' 		=> apply_filters( 'loop_shop_per_page', get_option( 'posts_per_page' ) ),
 			'shop_columns' 		=> apply_filters( 'loop_shop_columns', 4 ),
-			'behavious' 		=> '0',
+			'behaviour' 		=> '0',
 			'method'	 		=> 'post',
 		) );
 
