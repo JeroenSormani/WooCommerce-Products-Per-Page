@@ -49,6 +49,7 @@ Options like:
 * Easier use in themes/templates
 * Fix - bug with product tags
 * Removed stylesheet (was just one line :o)
+* Inserted override for themes that would override the posts_per_page in query
 
 = 1.0.10 =
 * Fix - Notices in debug mode
