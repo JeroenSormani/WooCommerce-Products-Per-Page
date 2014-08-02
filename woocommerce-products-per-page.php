@@ -3,7 +3,7 @@
 Plugin Name: Woocommerce Products Per Page
 Plugin URI: http://www.jeroensormani.nl/
 Description: Integrate a 'products per page' dropdown on your WooCommerce website! Set-up in <strong>seconds</strong>!
-Version: 1.1.0
+Version: 1.1.0.1
 Author: Jeroen Sormani
 Author URI: http://www.jeroensormani.nl
 
@@ -61,6 +61,9 @@ class Woocommerce_Products_Per_Page {
 	 */
 	public function __construct() {
 		
+		if ( ! function_exists( 'is_plugin_active_for_network' ) )
+		    require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
+		    
 		if ( ! in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) :
 			if ( ! is_plugin_active_for_network( 'woocommerce/woocommerce.php' ) ) :
 				return;
@@ -270,7 +273,7 @@ class Woocommerce_Products_Per_Page {
 	 */
 	public function wppp_pre_get_posts( $q ) {
 
-		if ( function_exists( 'woocommerce_products_will_display' ) && woocommerce_products_will_display() ) :
+		if ( function_exists( 'woocommerce_products_will_display' ) && woocommerce_products_will_display() && $q->is_main_query() ) :
 			$q->set( 'posts_per_page', $this->wppp_loop_shop_per_page() );
 		endif;
 

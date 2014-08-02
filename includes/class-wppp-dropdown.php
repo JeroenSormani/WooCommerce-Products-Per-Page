@@ -125,7 +125,7 @@ class WPPP_Dropdown extends Woocommerce_Products_Per_Page {
 						<option value="<?php echo $value; ?>" <?php selected( $value, $selected_match ); ?>>
 							<?php 
 							$ppp_text = apply_filters( 'wppp_ppp_text', __( '%s products per page', 'woocommerce-products-per-page' ), $value );
-							printf( $ppp_text, $value == -1 ? __( 'All', 'wppp' ) : $value ); // Set to 'All' when value is -1
+							printf( $ppp_text, $value == -1 ? __( 'All', 'woocommerce-products-per-page' ) : $value ); // Set to 'All' when value is -1
 							?>
 						</option>
 						<?php

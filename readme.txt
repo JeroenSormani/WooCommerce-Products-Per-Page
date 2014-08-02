@@ -4,7 +4,7 @@ Donate link: http://www.jeroensormani.nl/donate/
 Tags: Products per page, woocommerce, woocommerce products, woocommerce products per page, woocommerce displayed products, woocommerce quantity products, woocommerce amount of products, woocommerce number of products, woocommerce shown products
 Requires at least: 3.6.0
 Tested up to: 3.9.1
-Stable tag: 1.1.0
+Stable tag: 1.1.0.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -42,6 +42,12 @@ Options like:
 
 
 == Changelog ==
+
+= next =
+* Translate - ‚All’
+
+= 1.1.0.1 =
+* Removed - Duplicated main file with wrong name
 
 = 1.1.0 =
 * Complete plugin rewrite
