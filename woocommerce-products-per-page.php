@@ -1,11 +1,11 @@
 <?PHP
 /*
 Plugin Name: Woocommerce Products Per Page
-Plugin URI: http://www.jeroensormani.nl/
+Plugin URI: http://www.jeroensormani.com/
 Description: Integrate a 'products per page' dropdown on your WooCommerce website! Set-up in <strong>seconds</strong>!
-Version: 1.1.0.1
+Version: 1.1.1
 Author: Jeroen Sormani
-Author URI: http://www.jeroensormani.nl
+Author URI: http://www.jeroensormani.com
 
  * Copyright Jeroen Sormani
  *
@@ -40,7 +40,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  */
 
 class Woocommerce_Products_Per_Page {
-	
+
 	/**
 	 * Settings from settings page.
 	 *
@@ -50,38 +50,39 @@ class Woocommerce_Products_Per_Page {
 	 * @var array $settings Contains all the user settings.
 	 */
 	public $settings;
-	
-	
+
+
 	/**
-	 * __construct functon.
+	 * Construct.
 	 *
 	 * @since 1.0.0
 	 *
 	 * @return void.
 	 */
 	public function __construct() {
-		
-		if ( ! function_exists( 'is_plugin_active_for_network' ) )
+
+		if ( ! function_exists( 'is_plugin_active_for_network' ) ) :
 		    require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
-		    
+		endif;
+
 		if ( ! in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) :
 			if ( ! is_plugin_active_for_network( 'woocommerce/woocommerce.php' ) ) :
 				return;
 			endif;
 		endif;
-	
+
 		// Initialise settings
 		$this->wppp_init_settings();
-		
+
 		// Initialize hooks
 		$this->wppp_hooks();
-		
+
 		// Load textdomain
 		load_plugin_textdomain( 'woocommerce-products-per-page', false, basename( dirname( __FILE__ ) ) . '/languages' );
-		
+
 	}
-	
-	
+
+
 	/**
 	 * Add all actions and filters.
 	 *
@@ -90,16 +91,16 @@ class Woocommerce_Products_Per_Page {
 	 * @return int number of columns.
 	 */
 	public function wppp_hooks() {
-		
+
 		// Add admin settings page
 		add_action( 'admin_menu', array( $this, 'wppp_settings_page_menu' ) );
-		
+
 		// Init settings
 		add_action( 'admin_init', array( $this, 'wppp_init_settings_page' ) );
 
 		// Add filter for product columns
 		add_filter( 'loop_shop_columns', array( $this, 'wppp_loop_shop_columns' ) );
-		
+
 		// Customer number of products per page
 		add_filter( 'loop_shop_per_page', array( $this, 'wppp_loop_shop_per_page' ) );
 		add_filter( 'pre_get_posts', array( $this, 'wppp_pre_get_posts' ), 1, 50 );
@@ -111,8 +112,8 @@ class Woocommerce_Products_Per_Page {
 		add_action( 'init', array( $this, 'wppp_submit_check' ) );
 
 	}
-	
-	
+
+
 	/**
 	 * Initialize admin settings page.
 	 *
@@ -123,8 +124,8 @@ class Woocommerce_Products_Per_Page {
 	public function wppp_settings_page_menu() {
 		add_options_page( 'WooCommerce Products Per Page', 'Products Per Page', 'manage_options', 'wppp_settings', array( $this, 'wppp_settings_page' ) );
 	}
-	
-	
+
+
 	/**
 	 * Initialize admin settings page.
 	 *
@@ -133,13 +134,13 @@ class Woocommerce_Products_Per_Page {
 	 * @return void.
 	 */
 	public function wppp_settings_page() {
-		
+
 		global $wppp_settings;
 		$wppp_settings->wppp_render_settings_page();
-		
+
 	}
-	
-	
+
+
 	/**
 	 * Initialize settings.
 	 *
@@ -158,7 +159,7 @@ class Woocommerce_Products_Per_Page {
 		$this->settings = get_option( 'wppp_settings' );
 
 	}
-	
+
 
 	/**
 	 * Default settings
@@ -189,10 +190,10 @@ class Woocommerce_Products_Per_Page {
 		) );
 
 		return $settings;
-		
+
 	}
-	
-	
+
+
 	/**
 	 * Initialise admin settings.
 	 *
@@ -203,19 +204,19 @@ class Woocommerce_Products_Per_Page {
 	 * @return void.
 	 */
 	public function wppp_init_settings_page() {
-		
+
 		/**
 		 * Settings page class
 		 */
 		require_once plugin_dir_path( __FILE__ ) . 'includes/class-wppp-settings.php';
-		
+
 		global $wppp_settings;
 		$wppp_settings = new WPPP_Settings();
 		$wppp_settings->wppp_settings_init();
-		
+
 	}
-	
-	
+
+
 	/**
 	 * Shop columns.
 	 *
@@ -232,10 +233,10 @@ class Woocommerce_Products_Per_Page {
 		endif;
 
 		return $columns;
-		
+
 	}
-	
-	
+
+
 	/**
 	 * Per page hook.
 	 *
@@ -258,7 +259,7 @@ class Woocommerce_Products_Per_Page {
 		else :
 			return $this->settings['default_ppp'];
 		endif;
-		
+
 	}
 
 
@@ -273,15 +274,15 @@ class Woocommerce_Products_Per_Page {
 	 */
 	public function wppp_pre_get_posts( $q ) {
 
-		if ( function_exists( 'woocommerce_products_will_display' ) && woocommerce_products_will_display() && $q->is_main_query() ) :
+		if ( function_exists( 'woocommerce_products_will_display' ) && woocommerce_products_will_display() && $q->is_main_query() && ! is_admin() ) :
 			$q->set( 'posts_per_page', $this->wppp_loop_shop_per_page() );
 		endif;
 
 		return $q;
 
 	}
-	
-	
+
+
 	/**
 	 * Add dropdown.
 	 *
@@ -292,7 +293,7 @@ class Woocommerce_Products_Per_Page {
 	 * @return void.
 	 */
 	public function wppp_shop_hooks() {
-		
+
 		if ( $this->settings['location'] == 'top' ) :
 			add_action( 'woocommerce_before_shop_loop', array( $this, 'wppp_dropdown' ) );
 		elseif ( $this->settings['location'] == 'bottom' ) :
@@ -301,10 +302,10 @@ class Woocommerce_Products_Per_Page {
 			add_action( 'woocommerce_before_shop_loop', array( $this, 'wppp_dropdown' ) );
 			add_action( 'woocommerce_after_shop_loop', array( $this, 'wppp_dropdown' ) );
 		endif;
-		
+
 	}
-	
-	
+
+
 	/**
 	 * Products per page dropdown.
 	 *
@@ -316,8 +317,8 @@ class Woocommerce_Products_Per_Page {
 	public function wppp_dropdown_object() {
 		$this->wppp_dropdown();
 	}
-	
-	
+
+
 	/**
 	 * Include dropdown.
 	 *
@@ -328,16 +329,16 @@ class Woocommerce_Products_Per_Page {
 	 * @return void.
 	 */
 	public function wppp_dropdown() {
-		
+
 		/**
 		 * Products per page dropdown
 		 */
 		require_once plugin_dir_path( __FILE__ ) . 'includes/class-wppp-dropdown.php';
 		new wppp_dropdown();
-		
+
 	}
-	
-	
+
+
 	/**
 	 * Initilize session.
 	 *
@@ -350,16 +351,16 @@ class Woocommerce_Products_Per_Page {
 	 * @return void.
 	 */
 	public function wppp_set_customer_session() {
-	
+
 		global $woocommerce;
 
 		if ( $woocommerce->version > '2.1' ) :
 			$woocommerce->session->set_customer_session_cookie( true );
 		endif;
-		
+
 	}
-	
-	
+
+
 	/**
 	 * Set session.
 	 *
@@ -372,7 +373,7 @@ class Woocommerce_Products_Per_Page {
 	 * @return void.
 	 */
 	public function wppp_submit_check() {
-		
+
 		global $woocommerce;
 
 		if ( isset( $_POST['wppp_ppp'] ) ) :
@@ -380,9 +381,9 @@ class Woocommerce_Products_Per_Page {
 		elseif ( isset( $_GET['wppp_ppp'] ) ) :
 			$woocommerce->session->set( 'products_per_page', $_GET['wppp_ppp'] );
 		endif;
-		
+
 	}
-	
+
 
 }
 
