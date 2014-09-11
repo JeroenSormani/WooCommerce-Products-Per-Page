@@ -354,7 +354,7 @@ class Woocommerce_Products_Per_Page {
 
 		global $woocommerce;
 
-		if ( $woocommerce->version > '2.1' ) :
+		if ( $woocommerce->version > '2.1' && ! is_admin() ) :
 			$woocommerce->session->set_customer_session_cookie( true );
 		endif;
 
