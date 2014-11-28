@@ -3,8 +3,8 @@ Contributors: sormano
 Donate link: http://www.jeroensormani.com/donate/
 Tags: Products per page, woocommerce, woocommerce products, woocommerce products per page, woocommerce displayed products, woocommerce quantity products, woocommerce amount of products, woocommerce number of products, woocommerce shown products
 Requires at least: 3.6.0
-Tested up to: 3.9.2
-Stable tag: 1.1.1
+Tested up to: 3.4
+Stable tag: 1.1.2
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -42,6 +42,9 @@ Options like:
 
 
 == Changelog ==
+
+= 1.1.2 = 11/08/2014
+* WC 2.2 compatibility fix
 
 = 1.1.1 = 18/08/2014
 * Proper translation for 'All'
