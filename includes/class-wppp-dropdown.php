@@ -2,15 +2,15 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 /**
- * Class WPPP_Dropdown
+ * Class WPPP_Dropdown.
  *
- * Products per page dropdown class
+ * Products per page dropdown class.
  *
  * @class       WPPP_Dropdown
  * @version     1.1.0
  * @author      Jeroen Sormani
  */
-class WPPP_Dropdown extends Woocommerce_Products_Per_Page {
+class WPPP_Dropdown {
 
 
 	/**
@@ -29,16 +29,12 @@ class WPPP_Dropdown extends Woocommerce_Products_Per_Page {
 	 *
 	 * @since 1.0.0
 	 */
-	public function __construct( $products_per_page_options = null ) {
+	public function __construct() {
 
-		parent::__construct();
+		// Get all the settings
+		$this->settings = WooCommerce_Products_Per_page()->settings;
 
-		$this->products_per_page = $this->wppp_prep_ppp( $products_per_page_options );
-
-		if ( false == $products_per_page_options ) :
-			$this->products_per_page_options = $this->wppp_prep_ppp( apply_filters( 'wppp_products_per_page', $this->settings['productsPerPage'] ) );
-		endif;
-
+		// Create the dropdown
 		$this->wppp_dropdown();
 
 	}
@@ -74,6 +70,9 @@ class WPPP_Dropdown extends Woocommerce_Products_Per_Page {
 		$cat 	= '';
 		$cat 	= $wp_query->get_queried_object();
 
+		// Set the products per page options (e.g. 4, 8, 12)
+		$products_per_page_options = $this->wppp_prep_ppp( apply_filters( 'wppp_products_per_page', $this->settings['productsPerPage'] ) );
+
 		// Set action url if option behaviour is true
 		// Paste QUERY string after for filter and orderby support
 		$query_string = ! empty( $_SERVER['QUERY_STRING'] ) ? '?' . add_query_arg( array( 'wppp_ppp' => false ), $_SERVER['QUERY_STRING'] ) : null;
@@ -91,20 +90,20 @@ class WPPP_Dropdown extends Woocommerce_Products_Per_Page {
 
 		// Only show on product categories
 		if ( woocommerce_products_will_display() ) :
-		?>
 
-			<form method="<?php echo $method; ?>" <?php echo $action; ?> style='float: right;' class="form-wppp-select products-per-page">
+			 do_action( 'wppp_before_dropdown_form' );
 
-				<?php do_action( 'wppp_before_dropdown' ); ?>
+			?><form method="<?php echo $method; ?>" <?php echo $action; ?> style='float: right;' class="form-wppp-select products-per-page"><?php
 
-				<select name="wppp_ppp" onchange="this.form.submit()" class="select wppp-select">
+				 do_action( 'wppp_before_dropdown' );
 
-					<?php
-					global $woocommerce;
-					foreach( $this->products_per_page_options as $key => $value ) :
+				?><select name="wppp_ppp" onchange="this.form.submit()" class="select wppp-select"><?php
+
+
+					foreach( $products_per_page_options as $key => $value ) :
 
 						// Get the right match for the selected option
-						$ppp_session = $woocommerce->session->get( 'products_per_page' );
+						$ppp_session = WC()->session->get( 'products_per_page' );
 						if( isset( $_POST['wppp_ppp'] ) ) :
 							$selected_match = $_POST['wppp_ppp'];
 						elseif( isset( $_GET['wppp_ppp'] ) ):
@@ -115,23 +114,25 @@ class WPPP_Dropdown extends Woocommerce_Products_Per_Page {
 							$selected_match = $this->settings['default_ppp'];
 						endif;
 
-						?>
-						<option value="<?php echo $value; ?>" <?php selected( $value, $selected_match ); ?>>
+
+						?><option value="<?php echo $value; ?>" <?php selected( $value, $selected_match ); ?>>
 							<?php
 							$ppp_text = apply_filters( 'wppp_ppp_text', __( '%s products per page', 'woocommerce-products-per-page' ), $value );
 							printf( $ppp_text, $value == -1 ? __( 'All', 'woocommerce-products-per-page' ) : $value ); // Set to 'All' when value is -1
-							?>
-						</option>
-						<?php
+
+						?></option><?php
+
 
 					endforeach;
-					?>
-				</select>
 
-				<?php do_action( 'wppp_after_dropdown' ); ?>
+				?></select><?php
 
-			</form>
-		<?php
+				do_action( 'wppp_after_dropdown' );
+
+			?></form><?php
+
+			do_action( 'wppp_after_dropdown_form' );
+
 		endif;
 
 	}

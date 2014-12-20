@@ -1,11 +1,11 @@
-<?PHP
+<?php
 /*
-Plugin Name: Woocommerce Products Per Page
-Plugin URI: http://www.jeroensormani.com/
-Description: Integrate a 'products per page' dropdown on your WooCommerce website! Set-up in <strong>seconds</strong>!
-Version: 1.1.2
-Author: Jeroen Sormani
-Author URI: http://www.jeroensormani.com
+ * Plugin Name: Woocommerce Products Per Page
+ * Plugin URI: http://www.jeroensormani.com/
+ * Description: Integrate a 'products per page' dropdown on your WooCommerce website! Set-up in <strong>seconds</strong>!
+ * Version: 1.1.3
+ * Author: Jeroen Sormani
+ * Author URI: http://www.jeroensormani.com
 
  * Copyright Jeroen Sormani
  *
@@ -53,11 +53,19 @@ class Woocommerce_Products_Per_Page {
 
 
 	/**
+	 * Instace of Woocommerce_Products_Per_Page.
+	 *
+	 * @since 1.1.3
+	 * @access private
+	 * @var object $instance The instance of Woocommerce_Products_Per_Page.
+	 */
+	private static $instance;
+
+
+	/**
 	 * Construct.
 	 *
 	 * @since 1.0.0
-	 *
-	 * @return void.
 	 */
 	public function __construct() {
 
@@ -71,14 +79,7 @@ class Woocommerce_Products_Per_Page {
 			endif;
 		endif;
 
-		// Initialise settings
-		$this->wppp_init_settings();
-
-		// Initialize hooks
-		$this->wppp_hooks();
-
-		// Load textdomain
-		load_plugin_textdomain( 'woocommerce-products-per-page', false, basename( dirname( __FILE__ ) ) . '/languages' );
+		$this->init();
 
 	}
 
@@ -94,9 +95,6 @@ class Woocommerce_Products_Per_Page {
 
 		// Add admin settings page
 		add_action( 'admin_menu', array( $this, 'wppp_settings_page_menu' ) );
-
-		// Init settings
-		add_action( 'admin_init', array( $this, 'wppp_init_settings_page' ) );
 
 		// Add filter for product columns
 		add_filter( 'loop_shop_columns', array( $this, 'wppp_loop_shop_columns' ) );
@@ -115,29 +113,67 @@ class Woocommerce_Products_Per_Page {
 
 
 	/**
-	 * Initialize admin settings page.
+	 * Instance.
 	 *
-	 * @since 1.1.0
+	 * An global instance of the class. Used to retrieve the instance
+	 * to use on other files/plugins/themes.
 	 *
-	 * @return void.
+	 * @since 1.0.3
+	 * @return object Instance of the class.
 	 */
-	public function wppp_settings_page_menu() {
-		add_options_page( 'WooCommerce Products Per Page', 'Products Per Page', 'manage_options', 'wppp_settings', array( $this, 'wppp_settings_page' ) );
+	public static function instance() {
+
+		if ( is_null( self::$instance ) ) :
+			self::$instance = new self();
+		endif;
+
+		return self::$instance;
+
+	}
+
+
+	/**
+	 * init.
+	 *
+	 * Initialize plugin parts.
+	 *
+	 * @since 1.0.0
+	 */
+	public function init() {
+
+		if ( is_admin() ) :
+
+			/**
+			 * Settings page class
+			 */
+			require_once plugin_dir_path( __FILE__ ) . 'includes/class-wppp-settings.php';
+			$this->wppp_settings = new WPPP_Settings();
+
+		endif;
+
+
+		// Initialise settings
+		$this->wppp_init_settings();
+
+		// Initialize hooks
+		$this->wppp_hooks();
+
+		// Load textdomain
+		load_plugin_textdomain( 'woocommerce-products-per-page', false, basename( dirname( __FILE__ ) ) . '/languages' );
+
 	}
 
 
 	/**
 	 * Initialize admin settings page.
 	 *
-	 * @since 1.0.0
-	 *
-	 * @return void.
+	 * @since 1.1.0
 	 */
-	public function wppp_settings_page() {
-
-		global $wppp_settings;
-		$wppp_settings->wppp_render_settings_page();
-
+	public function wppp_settings_page_menu() {
+		add_options_page( 'WooCommerce Products Per Page', 'Products Per Page', 'manage_options', 'wppp_settings', array(
+			$this->wppp_settings,
+			'wppp_render_settings_page'
+		) );
 	}
 
 
@@ -152,7 +188,7 @@ class Woocommerce_Products_Per_Page {
 	 */
 	public function wppp_init_settings() {
 
-		if ( !get_option( 'wppp_settings' ) ) :
+		if ( ! get_option( 'wppp_settings' ) ) :
 			add_option( 'wppp_settings', $this->wppp_settings_defaults() );
 		endif;
 
@@ -182,7 +218,7 @@ class Woocommerce_Products_Per_Page {
 		// Set default settings
 		$settings = apply_filters( 'wppp_settings_defaults', array(
 			'location'	 		=> 'topbottom',
-			'productsPerPage' => $ppp_default,
+			'productsPerPage' 	=> $ppp_default,
 			'default_ppp' 		=> apply_filters( 'loop_shop_per_page', get_option( 'posts_per_page' ) ),
 			'shop_columns' 		=> apply_filters( 'loop_shop_columns', 4 ),
 			'behaviour' 		=> '0',
@@ -190,29 +226,6 @@ class Woocommerce_Products_Per_Page {
 		) );
 
 		return $settings;
-
-	}
-
-
-	/**
-	 * Initialise admin settings.
-	 *
-	 * Initializes settings, but doesn't display them.
-	 *
-	 * @since 1.1.0
-	 *
-	 * @return void.
-	 */
-	public function wppp_init_settings_page() {
-
-		/**
-		 * Settings page class
-		 */
-		require_once plugin_dir_path( __FILE__ ) . 'includes/class-wppp-settings.php';
-
-		global $wppp_settings;
-		$wppp_settings = new WPPP_Settings();
-		$wppp_settings->wppp_settings_init();
 
 	}
 
@@ -254,8 +267,8 @@ class Woocommerce_Products_Per_Page {
 			return $_POST['wppp_ppp'];
 		elseif ( isset( $_GET['wppp_ppp'] ) ) :
 			return $_GET['wppp_ppp'];
-		elseif ( $woocommerce->session->__isset( 'products_per_page' ) ) :
-			return $woocommerce->session->__get( 'products_per_page' );
+		elseif ( WC()->session->__isset( 'products_per_page' ) ) :
+			return WC()->session->__get( 'products_per_page' );
 		else :
 			return $this->settings['default_ppp'];
 		endif;
@@ -289,8 +302,6 @@ class Woocommerce_Products_Per_Page {
 	 * Add the dropdown to the category/shop pages.
 	 *
 	 * @since 1.0.0
-	 *
-	 * @return void.
 	 */
 	public function wppp_shop_hooks() {
 
@@ -311,8 +322,6 @@ class Woocommerce_Products_Per_Page {
 	 *
 	 * @since 1.0.0
 	 * @deprecated 1.1.0 Use wppp_dropdown() instead.
-	 *
-	 * @return void.
 	 */
 	public function wppp_dropdown_object() {
 		$this->wppp_dropdown();
@@ -325,8 +334,6 @@ class Woocommerce_Products_Per_Page {
 	 * Include dropdown class and create an instance.
 	 *
 	 * @since 1.0.0
-	 *
-	 * @return void.
 	 */
 	public function wppp_dropdown() {
 
@@ -345,17 +352,11 @@ class Woocommerce_Products_Per_Page {
 	 * Set an initial session for WC 2.1.X users. Cookies are set automatically prior 2.1.X.
 	 *
 	 * @since 1.0.0
-	 *
-	 * @global object $woocommerce WooCommerce global object.
-	 *
-	 * @return void.
 	 */
 	public function wppp_set_customer_session() {
 
-		global $woocommerce;
-
-		if ( $woocommerce->version > '2.1' && ! is_admin() ) :
-			$woocommerce->session->set_customer_session_cookie( true );
+		if ( WC()->version > '2.1' && ! is_admin() ) :
+			WC()->session->set_customer_session_cookie( true );
 		endif;
 
 	}
@@ -367,19 +368,13 @@ class Woocommerce_Products_Per_Page {
 	 * Set products per page in session.
 	 *
 	 * @since 1.1.0
-	 *
-	 * @global object $woocommerce WooCommerce global object.
-	 *
-	 * @return void.
 	 */
 	public function wppp_submit_check() {
 
-		global $woocommerce;
-
 		if ( isset( $_POST['wppp_ppp'] ) ) :
-			$woocommerce->session->set( 'products_per_page', $_POST['wppp_ppp'] );
+			WC()->session->set( 'products_per_page', $_POST['wppp_ppp'] );
 		elseif ( isset( $_GET['wppp_ppp'] ) ) :
-			$woocommerce->session->set( 'products_per_page', $_GET['wppp_ppp'] );
+			WC()->session->set( 'products_per_page', $_GET['wppp_ppp'] );
 		endif;
 
 	}
@@ -387,6 +382,29 @@ class Woocommerce_Products_Per_Page {
 
 }
 
-global $wppp;
-$wppp = new woocommerce_products_per_page();
-$wppp->wppp_shop_hooks();
+
+/**
+ * The main function responsible for returning the Woocommerce_Products_Per_Page object.
+ *
+ * Use this function like you would a global variable, except without needing to declare the global.
+ *
+ * Example: <?php Woocommerce_Products_Per_Page()->method_name(); ?>
+ *
+ * @since 1.0.3
+ *
+ * @return object Woocommerce_Products_Per_Page class object.
+ */
+if ( ! function_exists( 'Woocommerce_Products_Per_Page' ) ) :
+
+ 	function Woocommerce_Products_Per_Page() {
+		return Woocommerce_Products_Per_Page::instance();
+	}
+
+endif;
+
+Woocommerce_Products_Per_Page();
+Woocommerce_Products_Per_Page()->wppp_shop_hooks();
+
+
+// Backwards compatibility
+$_GLOBALS['wppp'] = Woocommerce_Products_Per_Page();
