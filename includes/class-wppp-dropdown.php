@@ -93,7 +93,7 @@ class WPPP_Dropdown {
 
 			 do_action( 'wppp_before_dropdown_form' );
 
-			?><form method="<?php echo $method; ?>" <?php echo $action; ?> style='float: right;' class="form-wppp-select products-per-page"><?php
+			?><form method="<?php echo $method; ?>" <?php echo $action; ?> style='float: right; margin-left: 5px;' class="form-wppp-select products-per-page"><?php
 
 				 do_action( 'wppp_before_dropdown' );
 
