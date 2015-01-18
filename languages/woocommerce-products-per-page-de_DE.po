@@ -1,0 +1,83 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WooCommerce Products Per Page 1.0.1\n"
+"POT-Creation-Date: 2014-03-15 14:13+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Michael Firnkes <info@blogprofis.de>\n"
+"Language-Team: Jeroen Sormani <jeroen.sormani@gmail.com>\n"
+"Language: French\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.5\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/\n"
+"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk\n"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:27
+msgid "Dropdown location"
+msgstr "Position des Dropdown"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:35
+msgid "List of dropdown options"
+msgstr "Liste der Dropdown-Einträge"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:43
+msgid "Default products per page"
+msgstr "Standardwert 'Produkte pro Seite'"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:51
+msgid "Shop columns"
+msgstr "Anzahl Spalten im Shop"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:59
+msgid "First category page"
+msgstr "Erste Seite der Produktkategorie"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:73
+msgid "WooCommerce Products Per Page"
+msgstr "WooCommerce Products Per Page"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:92
+msgid "Top"
+msgstr "Beginn"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:93
+msgid "Bottom"
+msgstr "Ende"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:94
+msgid "Top/Bottom"
+msgstr "Beginn/Ende"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:95
+msgid "None"
+msgstr "Keine"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:107
+msgid "Seperated by spaces <em>(-1 for all products)</em>"
+msgstr "Kommagetrennte Eingabe <em>(-1 für 'Alle Produkte anzeigen')</em>"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:118
+msgid "-1 for all products"
+msgstr "-1 für 'Alle Produkte anzeigen'"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:140
+msgid "When checked and a new number of PPP is selected, the visitor will be send to the first page of the product category"
+msgstr "Wenn die Option aktiviert ist, und der Nutzer einen anderen Eintrag 'Produkte pro Seite' wählt, wird er zur ersten Seite der Produktkategorie weitergeleitet"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:187
+msgid "Configure the WooCommerce Product Per Page settings here."
+msgstr "Hier kannst du die Einstellungen von WooCommerce Product Per Page ändern."
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/objects/wppp-dropdown.php:49
+#, php-format
+msgid "%s products per page"
+msgstr "%s Produkte pro Seite"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/objects/wppp-dropdown.php:50
+msgid "All"
+msgstr "Alle"
+

@@ -26,6 +26,7 @@ Options like:
 - Dutch
 - French [(whoaloic)](http://profiles.wordpress.org/whoaloic)
 - Persian [(amir_tara67)](http://profiles.wordpress.org/amir_tara67)
+- Deutsch [(Michael)](http://profiles.wordpress.org/blogprofis/)
 
 
 == Installation ==
@@ -46,6 +47,7 @@ Options like:
 = 1.1.4 - 10/01/2015 =
 
 * Fix - Dropdown hides behind add to cart notice (non-ajax button)
+* Add - German translation
 
 = 1.1.3.1 - 22/12/2014 =
 
