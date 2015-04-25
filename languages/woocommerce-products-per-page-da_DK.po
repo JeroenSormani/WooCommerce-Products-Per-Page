@@ -1,0 +1,123 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Woocommerce Products Per Page v1.1.6\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2015-03-25 09:30:11+0000\n"
+"Last-Translator: kelderkold <keld@slotworld.dk>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: CSL v1.x\n"
+"X-Poedit-Language: Danish\n"
+"X-Poedit-Country: DENMARK\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: includes/class-wppp-dropdown.php:120
+#, php-format
+#@ woocommerce-products-per-page
+msgid "%s products per page"
+msgstr "%s produkter pr. side"
+
+#: includes/class-wppp-dropdown.php:121
+#@ woocommerce-products-per-page
+msgid "All"
+msgstr "Alle"
+
+#: includes/class-wppp-settings.php:55
+#@ woocommerce-products-per-page
+msgid "Dropdown location"
+msgstr "Rullemenu lokation"
+
+#: includes/class-wppp-settings.php:63
+#@ woocommerce-products-per-page
+msgid "List of dropdown options"
+msgstr "Valg muligheder i rullemenuen"
+
+#: includes/class-wppp-settings.php:71
+#@ woocommerce-products-per-page
+msgid "Default products per page"
+msgstr "Standard antal produkter pr. side"
+
+#: includes/class-wppp-settings.php:79
+#@ woocommerce-products-per-page
+msgid "Shop columns"
+msgstr "Butik kolonner"
+
+#: includes/class-wppp-settings.php:87
+#@ woocommerce-products-per-page
+msgid "First category page"
+msgstr "Første kategori side"
+
+#: includes/class-wppp-settings.php:95
+#@ woocommerce-products-per-page
+msgid "HTTP method"
+msgstr "HTTP metode"
+
+#: includes/class-wppp-settings.php:115
+#@ woocommerce-products-per-page
+msgid "WooCommerce Products Per Page"
+msgstr "WooCommerce produkter pr. side"
+
+#: includes/class-wppp-settings.php:142
+#@ woocommerce-products-per-page
+msgid "Top"
+msgstr "Top"
+
+#: includes/class-wppp-settings.php:145
+#@ woocommerce-products-per-page
+msgid "Bottom"
+msgstr "Bund"
+
+#: includes/class-wppp-settings.php:148
+#@ woocommerce-products-per-page
+msgid "Top/Bottom"
+msgstr "Top/Bund"
+
+#: includes/class-wppp-settings.php:151
+#@ woocommerce-products-per-page
+msgid "None"
+msgstr "Ingen"
+
+#: includes/class-wppp-settings.php:170
+#@ woocommerce-products-per-page
+msgid "Seperated by spaces <em>(-1 for all products)</em>"
+msgstr "Separeret af mellemrum <em>(-1 for alle produkter)</em>"
+
+#: includes/class-wppp-settings.php:186
+#@ woocommerce-products-per-page
+msgid "-1 for all products"
+msgstr "-1 for alle produkter"
+
+#: includes/class-wppp-settings.php:219
+#@ woocommerce-products-per-page
+msgid "When checked and a new number of PPP is selected, the visitor will be send to the first page of the product category"
+msgstr "Hvis afkrydset og et nyt antal af produkter pr. side er valgt, vil den besøgende blive sendt til den første side i den valgte produkt kategori"
+
+#: includes/class-wppp-settings.php:273
+#@ woocommerce-products-per-page
+msgid "POST"
+msgstr "SEND"
+
+#: includes/class-wppp-settings.php:274
+#@ woocommerce-products-per-page
+msgid "GET"
+msgstr "HENT"
+
+#: includes/class-wppp-settings.php:276
+#@ woocommerce-products-per-page
+msgid "GET sends the products per page via the url, POST does this on the background"
+msgstr "HENT sender produkter pr. side via url, SEND gør dette i baggrunden"
+
+#: includes/class-wppp-settings.php:289
+#@ woocommerce-products-per-page
+msgid "Configure the WooCommerce Product Per Page settings here."
+msgstr "Konfigurer WooCommerce produkter pr. side indstillinger her."
+
