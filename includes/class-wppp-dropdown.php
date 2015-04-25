@@ -78,9 +78,9 @@ class WPPP_Dropdown {
 		$query_string = ! empty( $_SERVER['QUERY_STRING'] ) ? '?' . add_query_arg( array( 'wppp_ppp' => false ), $_SERVER['QUERY_STRING'] ) : null;
 
 		if ( isset( $cat->term_id ) && isset( $cat->taxonomy ) && isset( $this->settings['behaviour'] ) && true == $this->settings['behaviour'] ) :
-			$action = ' action="' . get_term_link( $cat->term_id, $cat->taxonomy ) . $query_string . '"';
+			$action = get_term_link( $cat->term_id, $cat->taxonomy ) . $query_string;
 		elseif ( isset( $this->settings['behaviour'] ) &&  true == $this->settings['behaviour'] ) :
-			$action = 'action="' . get_permalink( woocommerce_get_page_id( 'shop' ) ) . $query_string . '"';
+			$action = get_permalink( woocommerce_get_page_id( 'shop' ) ) . $query_string;
 		endif;
 
 		$method = 'post'; // default
@@ -93,7 +93,7 @@ class WPPP_Dropdown {
 
 			 do_action( 'wppp_before_dropdown_form' );
 
-			?><form method="<?php echo esc_attr( $method ); ?>" <?php echo esc_url( $action ); ?> style='float: right; margin-left: 5px;' class="form-wppp-select products-per-page"><?php
+			?><form method="<?php echo esc_attr( $method ); ?>" action="<?php echo esc_url( $action ); ?>" style='float: right; margin-left: 5px;' class="form-wppp-select products-per-page"><?php
 
 				 do_action( 'wppp_before_dropdown' );
 
