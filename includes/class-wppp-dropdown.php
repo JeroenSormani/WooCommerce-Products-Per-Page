@@ -93,20 +93,19 @@ class WPPP_Dropdown {
 
 			 do_action( 'wppp_before_dropdown_form' );
 
-			?><form method="<?php echo $method; ?>" <?php echo $action; ?> style='float: right; margin-left: 5px;' class="form-wppp-select products-per-page"><?php
+			?><form method="<?php echo esc_attr( $method ); ?>" <?php echo esc_url( $action ); ?> style='float: right; margin-left: 5px;' class="form-wppp-select products-per-page"><?php
 
 				 do_action( 'wppp_before_dropdown' );
 
 				?><select name="wppp_ppp" onchange="this.form.submit()" class="select wppp-select"><?php
 
-
 					foreach( $products_per_page_options as $key => $value ) :
 
 						// Get the right match for the selected option
 						$ppp_session = WC()->session->get( 'products_per_page' );
-						if( isset( $_POST['wppp_ppp'] ) ) :
+						if ( isset( $_POST['wppp_ppp'] ) ) :
 							$selected_match = $_POST['wppp_ppp'];
-						elseif( isset( $_GET['wppp_ppp'] ) ):
+						elseif ( isset( $_GET['wppp_ppp'] ) ):
 							$selected_match = $_GET['wppp_ppp'];
 						elseif ( ! empty( $ppp_session ) ) :
 							$selected_match = $ppp_session;
@@ -114,14 +113,12 @@ class WPPP_Dropdown {
 							$selected_match = $this->settings['default_ppp'];
 						endif;
 
+						?><option value="<?php echo esc_attr( $value ); ?>" <?php selected( $value, $selected_match ); ?>><?php
 
-						?><option value="<?php echo $value; ?>" <?php selected( $value, $selected_match ); ?>>
-							<?php
 							$ppp_text = apply_filters( 'wppp_ppp_text', __( '%s products per page', 'woocommerce-products-per-page' ), $value );
 							printf( $ppp_text, $value == -1 ? __( 'All', 'woocommerce-products-per-page' ) : $value ); // Set to 'All' when value is -1
 
 						?></option><?php
-
 
 					endforeach;
 
