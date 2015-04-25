@@ -27,6 +27,8 @@ Options like:
 - French [(whoaloic)](http://profiles.wordpress.org/whoaloic)
 - Persian [(amir_tara67)](http://profiles.wordpress.org/amir_tara67)
 - Deutsch [(Michael)](http://profiles.wordpress.org/blogprofis/)
+- Danish [(Keld)](https://profiles.wordpress.org/kelderkold/)
+- Spanish
 
 
 == Installation ==
@@ -43,6 +45,12 @@ Options like:
 
 
 == Changelog ==
+
+= 1.1.7 - 25/04/2015 =
+
+* Improvement - Add url escaping
+* Add - Spanish translation
+* Add - Danish translation
 
 = 1.1.6 - 20/03/2015 =
 
