@@ -94,19 +94,7 @@ class WPPP_Front_End {
 
 				foreach( $products_per_page_options as $key => $value ) :
 
-					// Get the right match for the selected option
-					$ppp_session = WC()->session->get( 'products_per_page' );
-					if ( isset( $_REQUEST['ppp'] ) ) :
-						$selected_match = $_REQUEST['ppp'];
-					elseif ( isset( $_REQUEST['wppp_ppp'] ) ):
-						$selected_match = $_REQUEST['wppp_ppp'];
-					elseif ( ! empty( $ppp_session ) ) :
-						$selected_match = $ppp_session;
-					else :
-						$selected_match = get_option( 'default_ppp', '12' );
-					endif;
-
-					?><option value="<?php echo esc_attr( $value ); ?>" <?php selected( $value, $selected_match ); ?>><?php
+					?><option value="<?php echo esc_attr( $value ); ?>" <?php selected( $value, $this->loop_shop_per_page() ); ?>><?php
 						$ppp_text = apply_filters( 'wppp_ppp_text', __( '%s products per page', 'woocommerce-products-per-page' ), $value );
 						esc_html( printf( $ppp_text, $value == -1 ? __( 'All', 'woocommerce-products-per-page' ) : $value ) ); // Set to 'All' when value is -1
 					?></option><?php
