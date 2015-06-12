@@ -172,7 +172,7 @@ class Woocommerce_Products_Per_Page {
 				$settings = get_option( 'wppp_settings', array() );
 				update_option( 'wppp_dropdown_location', isset( $settings['location'] ) ? $settings['location'] : 'topbottom'  );
 				update_option( 'wppp_dropdown_options', isset( $settings['productsPerPage'] ) ? $settings['productsPerPage'] : null  );
-				update_option( 'wppp_default_ppp', isset( $settings['wppp_default_ppp'] ) ? $settings['wppp_default_ppp'] : '12'  );
+				update_option( 'wppp_default_ppp', isset( $settings['default_ppp'] ) ? $settings['default_ppp'] : '12'  );
 				update_option( 'wppp_shop_columns', isset( $settings['shop_columns'] ) ? $settings['shop_columns'] : '4'  );
 				update_option( 'wppp_return_to_first', isset( $settings['behaviour'] ) && '1' == $settings['behaviour'] ? 'yes' : 'no'  );
 				update_option( 'wppp_method', isset( $settings['method'] ) ? $settings['method'] : 'post'  );

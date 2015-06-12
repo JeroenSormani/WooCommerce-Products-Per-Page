@@ -2,9 +2,9 @@
 Contributors: sormano
 Donate link: http://www.jeroensormani.com/donate/
 Tags: Products per page, woocommerce products, woocommerce products per page, woocommerce displayed products, woocommerce quantity products, woocommerce amount of products, woocommerce number of products, woocommerce shown products
-Requires at least: 3.6.0
-Tested up to: 4.2
-Stable tag: 1.1.7
+Requires at least: 3.7.0
+Tested up to: 4.2.2
+Stable tag: 1.2.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -29,6 +29,7 @@ Options like:
 - Deutsch [(Michael)](http://profiles.wordpress.org/blogprofis/)
 - Danish [(Keld)](https://profiles.wordpress.org/kelderkold/)
 - Spanish
+- Brazilian
 
 
 == Installation ==
@@ -45,6 +46,13 @@ Options like:
 
 
 == Changelog ==
+
+= 1.2.0 - 12/06/2015 =
+
+* Improvement - Structural changes to the plugin
+* NOTE - Due to the structural changes please check compatibility IF you have implemented a custom code
+* Improvement - Move the settings page to WooCommerce -> Settings -> Products -> Display
+* Add - Brazilian translation
 
 = 1.1.7 - 25/04/2015 =
 
