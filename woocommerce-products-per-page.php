@@ -3,7 +3,7 @@
  * Plugin Name: Woocommerce Products Per Page
  * Plugin URI: http://www.jeroensormani.com/
  * Description: Integrate a 'products per page' dropdown on your WooCommerce website! Set-up in <strong>seconds</strong>!
- * Version: 1.1.7
+ * Version: 1.2.0
  * Author: Jeroen Sormani
  * Author URI: http://www.jeroensormani.com
 
@@ -40,15 +40,14 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  */
 class Woocommerce_Products_Per_Page {
 
+
 	/**
-	 * Settings from settings page.
+	 * Plugin version.
 	 *
-	 * @since 1.1.0
-	 * @access public
-	 *
-	 * @var array $settings Contains all the user settings.
+	 * @since 1.2.0
+	 * @var string $version Plugin version number.
 	 */
-	public $settings;
+	public $version = '1.2.0';
 
 
 	/**
@@ -79,34 +78,6 @@ class Woocommerce_Products_Per_Page {
 		endif;
 
 		$this->init();
-
-	}
-
-
-	/**
-	 * Add all actions and filters.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @return int number of columns.
-	 */
-	public function wppp_hooks() {
-
-		// Add admin settings page
-		add_action( 'admin_menu', array( $this, 'wppp_settings_page_menu' ) );
-
-		// Add filter for product columns
-		add_filter( 'loop_shop_columns', array( $this, 'wppp_loop_shop_columns' ) );
-
-		// Customer number of products per page
-		add_filter( 'loop_shop_per_page', array( $this, 'wppp_loop_shop_per_page' ) );
-		add_action( 'woocommerce_product_query', array( $this, 'wppp_pre_get_posts' ), 2, 50 );
-
-		// Set cookie so PPP will be saved
-		add_action( 'init', array( $this, 'wppp_set_customer_session' ), 10 );
-
-		// Check if ppp form is submit
-		add_action( 'init', array( $this, 'wppp_submit_check' ) );
 
 	}
 
@@ -143,22 +114,77 @@ class Woocommerce_Products_Per_Page {
 		if ( is_admin() ) :
 
 			/**
-			 * Settings page class
+			 * Settings
 			 */
-			require_once plugin_dir_path( __FILE__ ) . 'includes/class-wppp-settings.php';
-			$this->wppp_settings = new WPPP_Settings();
+			require_once plugin_dir_path( __FILE__ ) . 'includes/admin/class-wppp-admin-settings.php';
+			$this->admin_settings = new WPPP_Admin_Settings();
+
+		else :
+
+			/**
+			 * Front end
+			 */
+			require_once plugin_dir_path( __FILE__ ) . 'includes/class-wppp-front-end.php';
+			$this->front_end = new WPPP_Front_End();
 
 		endif;
 
-
-		// Initialise settings
-		$this->wppp_init_settings();
-
-		// Initialize hooks
-		$this->wppp_hooks();
+		// Plugin update function
+		add_action( 'admin_init', array( $this, 'plugin_update' ) );
 
 		// Load textdomain
+		$this->load_textdomain();
+
+	}
+
+
+	/**
+	 * Textdomain.
+	 *
+	 * Load the textdomain based on WP language.
+	 *
+	 * @since 1.2.0
+	 */
+	public function load_textdomain() {
+
+		$locale = apply_filters( 'plugin_locale', get_locale(), 'woocommerce-products-per-page' );
+
+		// Load textdomain
+		load_textdomain( 'woocommerce-products-per-page', WP_LANG_DIR . '/woocommerce-products-per-page/woocommerce-products-per-page-' . $locale . '.mo' );
 		load_plugin_textdomain( 'woocommerce-products-per-page', false, basename( dirname( __FILE__ ) ) . '/languages' );
+
+	}
+
+
+	/**
+	 * Update plugin.
+	 *
+	 * Plugin update function, update data when required.
+	 *
+	 * @since 1.2.0
+	 */
+	public function plugin_update() {
+
+		if ( version_compare( get_option( 'wppp_version', '0' ), $this->version, '<' ) ) :
+
+			// Updating to 1.2.0
+			if ( version_compare( get_option( 'wppp_version', '0' ), '1.2.0', '<' ) ) :
+				$settings = get_option( 'wppp_settings', array() );
+				update_option( 'wppp_dropdown_location', isset( $settings['location'] ) ? $settings['location'] : 'topbottom'  );
+				update_option( 'wppp_dropdown_options', isset( $settings['productsPerPage'] ) ? $settings['productsPerPage'] : null  );
+				update_option( 'wppp_default_ppp', isset( $settings['wppp_default_ppp'] ) ? $settings['wppp_default_ppp'] : '12'  );
+				update_option( 'wppp_shop_columns', isset( $settings['shop_columns'] ) ? $settings['shop_columns'] : '4'  );
+				update_option( 'wppp_return_to_first', isset( $settings['behaviour'] ) && '1' == $settings['behaviour'] ? 'yes' : 'no'  );
+				update_option( 'wppp_method', isset( $settings['method'] ) ? $settings['method'] : 'post'  );
+			endif;
+
+			// Updating to 1.3.0 - for the future, delete the old settings.
+			if ( version_compare( get_option( 'wppp_version', '0' ), '1.3.0', '<' ) ) :
+				// delete_option( 'wppp_settings' );
+			endif;
+
+			update_option( 'wppp_version', $this->version );
+		endif;
 
 	}
 
@@ -169,10 +195,7 @@ class Woocommerce_Products_Per_Page {
 	 * @since 1.1.0
 	 */
 	public function wppp_settings_page_menu() {
-		add_options_page( 'WooCommerce Products Per Page', 'Products Per Page', 'manage_options', 'wppp_settings', array(
-			$this->wppp_settings,
-			'wppp_render_settings_page'
-		) );
+		return _deprecated_function( array( $this, __FUNCTION__ ), '1.2.0' );
 	}
 
 
@@ -186,13 +209,7 @@ class Woocommerce_Products_Per_Page {
 	 * @return int number of columns.
 	 */
 	public function wppp_init_settings() {
-
-		if ( ! get_option( 'wppp_settings' ) ) :
-			add_option( 'wppp_settings', $this->wppp_settings_defaults() );
-		endif;
-
-		$this->settings = get_option( 'wppp_settings' );
-
+		return _deprecated_function( array( $this, __FUNCTION__ ), '1.2.0' );
 	}
 
 
@@ -206,26 +223,7 @@ class Woocommerce_Products_Per_Page {
 	 * @return array default settings.
 	 */
 	public function wppp_settings_defaults() {
-
-		// Set default options to (3|6|9|All) rows
-		$ppp_default =
-			( apply_filters( 'loop_shop_columns', 4 ) * 3) . ' ' .
-			( apply_filters( 'loop_shop_columns', 4 ) * 6) . ' ' .
-			( apply_filters( 'loop_shop_columns', 4 ) * 9) . ' ' .
-			'-1';
-
-		// Set default settings
-		$settings = apply_filters( 'wppp_settings_defaults', array(
-			'location'	 		=> 'topbottom',
-			'productsPerPage' 	=> $ppp_default,
-			'default_ppp' 		=> apply_filters( 'loop_shop_per_page', get_option( 'posts_per_page' ) ),
-			'shop_columns' 		=> apply_filters( 'loop_shop_columns', 4 ),
-			'behaviour' 		=> '0',
-			'method'	 		=> 'post',
-		) );
-
-		return $settings;
-
+		return _deprecated_function( array( $this, __FUNCTION__ ), '1.2.0' );
 	}
 
 
@@ -239,13 +237,8 @@ class Woocommerce_Products_Per_Page {
 	 * @return int Number of columns.
 	 */
 	public function wppp_loop_shop_columns( $columns ) {
-
-		if ( $this->settings && $this->settings['shop_columns'] > 0 ) :
-			$columns = $this->settings['shop_columns'];
-		endif;
-
-		return $columns;
-
+		_deprecated_function( array( $this, __FUNCTION__ ), '1.2.0', 'Woocommerce_Products_Per_Page()->front_end->loop_shop_columns()' );
+		return $this->front_end->loop_shop_columns();
 	}
 
 
@@ -259,19 +252,8 @@ class Woocommerce_Products_Per_Page {
 	 * @return int Products per page.
 	 */
 	public function wppp_loop_shop_per_page() {
-
-		global $woocommerce;
-
-		if ( isset( $_POST['wppp_ppp'] ) ) :
-			return $_POST['wppp_ppp'];
-		elseif ( isset( $_GET['wppp_ppp'] ) ) :
-			return $_GET['wppp_ppp'];
-		elseif ( WC()->session->__isset( 'products_per_page' ) ) :
-			return WC()->session->__get( 'products_per_page' );
-		else :
-			return $this->settings['default_ppp'];
-		endif;
-
+		_deprecated_function( array( $this, __FUNCTION__ ), '1.2.0', 'Woocommerce_Products_Per_Page()->front_end->loop_shop_per_page()' );
+		return $this->front_end->loop_shop_per_page();
 	}
 
 
@@ -285,11 +267,8 @@ class Woocommerce_Products_Per_Page {
 	 * @return object Query object
 	 */
 	public function wppp_pre_get_posts( $q, $class ) {
-
-		if ( function_exists( 'woocommerce_products_will_display' ) && woocommerce_products_will_display() && $q->is_main_query() && ! is_admin() ) :
-			$q->set( 'posts_per_page', $this->wppp_loop_shop_per_page() );
-		endif;
-
+		_deprecated_function( array( $this, __FUNCTION__ ), '1.2.0', 'Woocommerce_Products_Per_Page()->front_end->woocommerce_product_query()' );
+		return $this->front_end->woocommerce_product_query();
 	}
 
 
@@ -301,16 +280,7 @@ class Woocommerce_Products_Per_Page {
 	 * @since 1.0.0
 	 */
 	public function wppp_shop_hooks() {
-
-		if ( $this->settings['location'] == 'top' ) :
-			add_action( 'woocommerce_before_shop_loop', array( $this, 'wppp_dropdown' ), 25 );
-		elseif ( $this->settings['location'] == 'bottom' ) :
-			add_action( 'woocommerce_after_shop_loop', array( $this, 'wppp_dropdown' ), 25 );
-		elseif ( $this->settings['location'] == 'topbottom' ):
-			add_action( 'woocommerce_before_shop_loop', array( $this, 'wppp_dropdown' ), 25 );
-			add_action( 'woocommerce_after_shop_loop', array( $this, 'wppp_dropdown' ), 25 );
-		endif;
-
+		return _deprecated_function( array( $this, __FUNCTION__ ), '1.2.0' );
 	}
 
 
@@ -321,6 +291,7 @@ class Woocommerce_Products_Per_Page {
 	 * @deprecated 1.1.0 Use wppp_dropdown() instead.
 	 */
 	public function wppp_dropdown_object() {
+		_deprecated_function( array( $this, __FUNCTION__ ), '1.1.0', '$this->wppp_dropdown()' );
 		$this->wppp_dropdown();
 	}
 
@@ -333,13 +304,8 @@ class Woocommerce_Products_Per_Page {
 	 * @since 1.0.0
 	 */
 	public function wppp_dropdown() {
-
-		/**
-		 * Products per page dropdown
-		 */
-		require_once plugin_dir_path( __FILE__ ) . 'includes/class-wppp-dropdown.php';
-		new wppp_dropdown();
-
+		_deprecated_function( array( $this, __FUNCTION__ ), '1.2.0', 'Woocommerce_Products_Per_Page()->front_end->products_per_page_dropdown()' );
+		return $this->front_end->products_per_page_dropdown();
 	}
 
 
@@ -351,11 +317,8 @@ class Woocommerce_Products_Per_Page {
 	 * @since 1.0.0
 	 */
 	public function wppp_set_customer_session() {
-
-		if ( WC()->version > '2.1' && ( ! is_admin() || defined( 'DOING_AJAX' ) ) && ! defined( 'DOING_CRON' ) ) :
-			WC()->session->set_customer_session_cookie( true );
-		endif;
-
+		_deprecated_function( array( $this, __FUNCTION__ ), '1.2.0', 'Woocommerce_Products_Per_Page()->front_end->set_customer_session()' );
+		return $this->front_end->set_customer_session();
 	}
 
 
@@ -367,13 +330,8 @@ class Woocommerce_Products_Per_Page {
 	 * @since 1.1.0
 	 */
 	public function wppp_submit_check() {
-
-		if ( isset( $_POST['wppp_ppp'] ) ) :
-			WC()->session->set( 'products_per_page', $_POST['wppp_ppp'] );
-		elseif ( isset( $_GET['wppp_ppp'] ) ) :
-			WC()->session->set( 'products_per_page', $_GET['wppp_ppp'] );
-		endif;
-
+		_deprecated_function( array( $this, __FUNCTION__ ), '1.2.0', 'Woocommerce_Products_Per_Page()->front_end->products_per_page_action()' );
+		return $this->front_end->products_per_page_dropdown();
 	}
 
 
@@ -400,7 +358,6 @@ if ( ! function_exists( 'Woocommerce_Products_Per_Page' ) ) :
 endif;
 
 Woocommerce_Products_Per_Page();
-Woocommerce_Products_Per_Page()->wppp_shop_hooks();
 
 
 // Backwards compatibility
