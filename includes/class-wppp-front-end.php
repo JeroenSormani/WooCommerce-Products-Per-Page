@@ -144,13 +144,13 @@ class WPPP_Front_End {
 	public function loop_shop_per_page() {
 
 		if ( isset( $_REQUEST['wppp_ppp'] ) ) :
-			return $_REQUEST['wppp_ppp'];
+			return intval( $_REQUEST['wppp_ppp'] );
 		elseif ( isset( $_REQUEST['ppp'] ) ) :
-			return $_REQUEST['ppp'];
+			return intval( $_REQUEST['ppp'] );
 		elseif ( WC()->session->__isset( 'products_per_page' ) ) :
-			return WC()->session->__get( 'products_per_page' );
+			return intval( WC()->session->__get( 'products_per_page' ) );
 		else :
-			return get_option( 'wppp_default_ppp', '12' );
+			return intval( get_option( 'wppp_default_ppp', '12' ) );
 		endif;
 
 	}
