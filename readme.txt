@@ -2,9 +2,9 @@
 Contributors: sormano
 Donate link: http://www.jeroensormani.com/donate/
 Tags: Products per page, woocommerce products, woocommerce products per page, woocommerce displayed products, woocommerce quantity products, woocommerce amount of products, woocommerce number of products, woocommerce shown products
-Requires at least: 3.7.0
-Tested up to: 4.2.2
-Stable tag: 1.2.0
+Requires at least: 3.8.0
+Tested up to: 4.3
+Stable tag: 1.2.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -46,6 +46,10 @@ Options like:
 
 
 == Changelog ==
+
+= 1.2.1 - 05/08/2015 =
+
+* Fix - GET method remembers query parameter strings
 
 = 1.2.0 - 12/06/2015 =
 
