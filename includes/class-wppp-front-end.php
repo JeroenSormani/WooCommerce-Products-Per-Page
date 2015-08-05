@@ -71,7 +71,7 @@ class WPPP_Front_End {
 
 		// Set action url if option behaviour is true
 		// Paste QUERY string after for filter and orderby support
-		$query_string = ! empty( $_SERVER['QUERY_STRING'] ) ? '?' . add_query_arg( array( 'wppp_ppp' => false ), $_SERVER['QUERY_STRING'] ) : null;
+		$query_string = ! empty( $_SERVER['QUERY_STRING'] ) ? '?' . add_query_arg( array( 'ppp' => false ), $_SERVER['QUERY_STRING'] ) : null;
 
 		if ( isset( $cat->term_id ) && isset( $cat->taxonomy ) && 'yes' == get_option( 'wppp_return_to_first', 'no' ) ) :
 			$action = get_term_link( $cat->term_id, $cat->taxonomy ) . $query_string;
@@ -86,7 +86,7 @@ class WPPP_Front_End {
 
 		do_action( 'wppp_before_dropdown_form' );
 
-		?><form method="<?php echo $method; ?>" action="<?php echo esc_url( $action ); ?>" style='float: right; margin-left: 5px;' class="form-wppp-select products-per-page"><?php
+		?><form method="<?php echo esc_attr( $method ); ?>" action="<?php echo esc_url( $action ); ?>" style='float: right; margin-left: 5px;' class="form-wppp-select products-per-page"><?php
 
 			 do_action( 'wppp_before_dropdown' );
 
@@ -102,6 +102,21 @@ class WPPP_Front_End {
 				endforeach;
 
 			?></select><?php
+
+			// Keep query string vars intact
+			foreach ( $_GET as $key => $val ) :
+
+				if ( 'ppp' === $key || 'submit' === $key ) :
+					continue;
+				endif;
+				if ( is_array( $val ) ) :
+					foreach( $val as $inner_val ) :
+						?><input type="hidden" name="<?php echo esc_attr( $key ); ?>[]" value="<?php echo esc_attr( $inner_val ); ?>" /><?php
+					endforeach;
+				else :
+					?><input type="hidden" name="<?php echo esc_attr( $key ); ?>" value="<?php echo esc_attr( $val ); ?>" /><?php
+				endif;
+			endforeach;
 
 			do_action( 'wppp_after_dropdown' );
 
