@@ -1,0 +1,86 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WooCommerce Products Per Page 1.0.1\n"
+"POT-Creation-Date: 2015-11-12 02:13+0300\n"
+"PO-Revision-Date: 2015-11-12 02:23+0300\n"
+"Last-Translator: \n"
+"Language-Team: Stanislav Ogryzkov <st@stanislaw.ru>\n"
+"Language: Russian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.5\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:27
+msgid "Drop-down location"
+msgstr "Расположение выпадающего списка"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:35
+msgid "List of dropdown options"
+msgstr "Список пунктов выпадающего списка"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:43
+msgid "Default products per page"
+msgstr "Товаров на странице по умолчанию"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:51
+msgid "Shop columns"
+msgstr "Столбцы магазина"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:59
+msgid "First category page"
+msgstr "Страница первой категории"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:73
+msgid "WooCommerce Products Per Page"
+msgstr "Товаров WooCommerce на странице"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:92
+msgid "Top"
+msgstr "Верх"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:93
+msgid "Bottom"
+msgstr "Низ"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:94
+msgid "Top/Bottom"
+msgstr "Верх/низ"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:95
+msgid "None"
+msgstr "Нет"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:107
+msgid "Seperated by spaces <em>(-1 for all products)</em>"
+msgstr "разделенных пробелами <i>(-1 для значения «все»)</i>"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:118
+msgid "-1 for all products"
+msgstr "-1 для значения «все»"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:140
+msgid "When checked and a new number of PPP is selected, the visitor will be send to the first page of the product category"
+msgstr "Если этот флажок отмечен, и выбрано новое количество товаров на странице, посетитель будет перенаправлен на первую страницу категории."
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/admin/options-page.php:187
+msgid "Configure the WooCommerce Product Per Page settings here."
+msgstr "Настройте отображение количества товаров WooCommerce на странице ниже."
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/objects/wppp-dropdown.php:49
+#, php-format
+msgid "%s products per page"
+msgstr "Товаров на странице: %s"
+
+#: /Users/Jeroen/plugins/woocommerce-products-per-page/trunk/objects/wppp-dropdown.php:50
+msgid "All"
+msgstr "все"
+
+#@ woocommerce-products-per-page
+#: includes/class-wppp-settings.php:95
+msgid "HTTP method"
+msgstr "HTTP-метод"
+

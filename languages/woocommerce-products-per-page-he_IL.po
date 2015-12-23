@@ -1,0 +1,120 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Woocommerce Products Per Page v1.1.6\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2015-12-23 09:29+0100\n"
+"Last-Translator: bennyp <benny.powers@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Poedit 1.7.1\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Poedit-Basepath: ../\n"
+"X-Textdomain-Support: yes\n"
+"Language: he_IL\n"
+"X-Poedit-SearchPath-0: .\n"
+
+# @ woocommerce-products-per-page
+#: includes/class-wppp-dropdown.php:120
+#, php-format
+msgid "%s products per page"
+msgstr "%s מוצרים לדף"
+
+# @ woocommerce-products-per-page
+#: includes/class-wppp-dropdown.php:121
+msgid "All"
+msgstr "כל"
+
+# @ woocommerce-products-per-page
+#: includes/class-wppp-settings.php:55
+msgid "Dropdown location"
+msgstr "מיקום לתפרית"
+
+# @ woocommerce-products-per-page
+#: includes/class-wppp-settings.php:63
+msgid "List of dropdown options"
+msgstr "רשימת אפשרויות לתפרית"
+
+# @ woocommerce-products-per-page
+#: includes/class-wppp-settings.php:71
+msgid "Default products per page"
+msgstr "מוצרים לדף ברירת המחדל"
+
+# @ woocommerce-products-per-page
+#: includes/class-wppp-settings.php:79
+msgid "Shop columns"
+msgstr "עמודים לחנות"
+
+# @ woocommerce-products-per-page
+#: includes/class-wppp-settings.php:87
+msgid "First category page"
+msgstr "הדף הראשון בקטגוריה"
+
+# @ woocommerce-products-per-page
+#: includes/class-wppp-settings.php:95
+msgid "HTTP method"
+msgstr "שיטת HTTP"
+
+# @ woocommerce-products-per-page
+#: includes/class-wppp-settings.php:115
+msgid "WooCommerce Products Per Page"
+msgstr "WooCommerce מוצרים לדף"
+
+# @ woocommerce-products-per-page
+#: includes/class-wppp-settings.php:142
+msgid "Top"
+msgstr "למעלה"
+
+# @ woocommerce-products-per-page
+#: includes/class-wppp-settings.php:145
+msgid "Bottom"
+msgstr "למטה"
+
+# @ woocommerce-products-per-page
+#: includes/class-wppp-settings.php:148
+msgid "Top/Bottom"
+msgstr "למעלה/למטה"
+
+# @ woocommerce-products-per-page
+#: includes/class-wppp-settings.php:151
+msgid "None"
+msgstr "כלום"
+
+# @ woocommerce-products-per-page
+#: includes/class-wppp-settings.php:170
+msgid "Seperated by spaces <em>(-1 for all products)</em>"
+msgstr "נפרדות על ידי רווחים <em>(-1 לכל המוצרים)</em>"
+
+# @ woocommerce-products-per-page
+#: includes/class-wppp-settings.php:186
+msgid "-1 for all products"
+msgstr "-1 לכל המוצרים"
+
+# @ woocommerce-products-per-page
+#: includes/class-wppp-settings.php:219
+msgid "When checked and a new number of PPP is selected, the visitor will be send to the first page of the product category"
+msgstr "כאשר מסומן, כל פעם שהמשתמשים בוחרים מספר מוצרים חדש, נשלחו לדף הראשון בקטגוריה"
+
+# @ woocommerce-products-per-page
+#: includes/class-wppp-settings.php:273
+msgid "POST"
+msgstr "POST"
+
+# @ woocommerce-products-per-page
+#: includes/class-wppp-settings.php:274
+msgid "GET"
+msgstr "GET"
+
+# @ woocommerce-products-per-page
+#: includes/class-wppp-settings.php:276
+msgid "GET sends the products per page via the url, POST does this on the background"
+msgstr "GET שולח את המוצרים לדף דרך ה URL, POST עושה את זה ברקע"
+
+# @ woocommerce-products-per-page
+#: includes/class-wppp-settings.php:289
+msgid "Configure the WooCommerce Product Per Page settings here."
+msgstr "עצב כאן אפשרויות ל- WooCommerce מוצרים לדף"
