@@ -1,24 +1,24 @@
 <?php
 /*
  * Plugin Name: Woocommerce Products Per Page
- * Plugin URI: http://www.jeroensormani.com/
+ * Plugin URI: https://wordpress.org/plugins/woocommerce-products-per-page/
  * Description: Integrate a 'products per page' dropdown on your WooCommerce website! Set-up in <strong>seconds</strong>!
- * Version: 1.2.1
+ * Version: 1.2.2
  * Author: Jeroen Sormani
- * Author URI: http://www.jeroensormani.com
+ * Author URI: http://jeroensormani.com
 
  * Copyright Jeroen Sormani
  *
- *     This file is part of Woocomerce Products Per Page,
+ *     This file is part of Woocommerce Products Per Page,
  *     a plugin for WordPress.
  *
- *     Woocomerce Products Per Page is free software:
+ *     Woocommerce Products Per Page is free software:
  *     You can redistribute it and/or modify it under the terms of the
  *     GNU General Public License as published by the Free Software
  *     Foundation, either version 3 of the License, or (at your option)
  *     any later version.
  *
- *     Woocomerce Products Per Page is distributed in the hope that
+ *     Woocommerce Products Per Page is distributed in the hope that
  *     it will be useful, but WITHOUT ANY WARRANTY; without even the
  *     implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
  *     PURPOSE. See the GNU General Public License for more details.
@@ -47,11 +47,11 @@ class Woocommerce_Products_Per_Page {
 	 * @since 1.2.0
 	 * @var string $version Plugin version number.
 	 */
-	public $version = '1.2.1';
+	public $version = '1.2.2';
 
 
 	/**
-	 * Instace of Woocommerce_Products_Per_Page.
+	 * Instance of Woocommerce_Products_Per_Page.
 	 *
 	 * @since 1.1.3
 	 * @access private
@@ -103,7 +103,7 @@ class Woocommerce_Products_Per_Page {
 
 
 	/**
-	 * init.
+	 * Init.
 	 *
 	 * Initialize plugin parts.
 	 *
@@ -195,7 +195,7 @@ class Woocommerce_Products_Per_Page {
 	 * @since 1.1.0
 	 */
 	public function wppp_settings_page_menu() {
-		return _deprecated_function( array( $this, __FUNCTION__ ), '1.2.0' );
+		_deprecated_function( array( $this, __FUNCTION__ ), '1.2.0' );
 	}
 
 
@@ -209,7 +209,7 @@ class Woocommerce_Products_Per_Page {
 	 * @return int number of columns.
 	 */
 	public function wppp_init_settings() {
-		return _deprecated_function( array( $this, __FUNCTION__ ), '1.2.0' );
+		_deprecated_function( array( $this, __FUNCTION__ ), '1.2.0' );
 	}
 
 
@@ -223,7 +223,7 @@ class Woocommerce_Products_Per_Page {
 	 * @return array default settings.
 	 */
 	public function wppp_settings_defaults() {
-		return _deprecated_function( array( $this, __FUNCTION__ ), '1.2.0' );
+		_deprecated_function( array( $this, __FUNCTION__ ), '1.2.0' );
 	}
 
 

@@ -1,10 +1,10 @@
 === WooCommerce Products Per Page ===
 Contributors: sormano
-Donate link: http://www.jeroensormani.com/donate/
+Donate link: http://jeroensormani.com/donate/
 Tags: Products per page, woocommerce products, woocommerce products per page, woocommerce displayed products, woocommerce quantity products, woocommerce amount of products, woocommerce number of products, woocommerce shown products
 Requires at least: 3.8.0
-Tested up to: 4.3
-Stable tag: 1.2.1
+Tested up to: 4.4
+Stable tag: 1.2.2
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -30,6 +30,8 @@ Options like:
 - Danish [(Keld)](https://profiles.wordpress.org/kelderkold/)
 - Spanish
 - Brazilian
+- Russian
+- Hebrew
 
 
 == Installation ==
@@ -46,6 +48,12 @@ Options like:
 
 
 == Changelog ==
+
+= 1.2.2 - 23/12/2015 =
+
+* [i18n] - Add Russian translation
+* [i18n] - Add Hebrew translation
+* [Improvement] - Change deprecated function to its successor
 
 = 1.2.1 - 05/08/2015 =
 

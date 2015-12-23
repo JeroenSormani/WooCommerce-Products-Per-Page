@@ -76,7 +76,7 @@ class WPPP_Front_End {
 		if ( isset( $cat->term_id ) && isset( $cat->taxonomy ) && 'yes' == get_option( 'wppp_return_to_first', 'no' ) ) :
 			$action = get_term_link( $cat->term_id, $cat->taxonomy ) . $query_string;
 		elseif ( 'yes' == get_option( 'wppp_return_to_first', 'no' ) ) :
-			$action = get_permalink( woocommerce_get_page_id( 'shop' ) ) . $query_string;
+			$action = get_permalink( wc_get_page_id( 'shop' ) ) . $query_string;
 		endif;
 
 		// Only show on product categories
@@ -134,6 +134,7 @@ class WPPP_Front_End {
 	 *
 	 * @since 1.2.0
 	 *
+	 * @param int $columns Current number of shop columns.
 	 * @return int Number of columns.
 	 */
 	public function loop_shop_columns( $columns ) {
@@ -192,7 +193,7 @@ class WPPP_Front_End {
 
 
 	/**
-	 * Initilize session.
+	 * Initialize session.
 	 *
 	 * Set an initial session for WC 2.1.X users. Cookies are set automatically prior 2.1.X.
 	 *

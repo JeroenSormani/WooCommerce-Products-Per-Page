@@ -29,7 +29,7 @@ class WPPP_Admin_Settings {
 	/**
 	 * Add settings.
 	 *
-	 * Add setting to the 'WoooCommerce' -> 'Settings' -> 'Products' -> 'Display'
+	 * Add setting to the 'WooCommerce' -> 'Settings' -> 'Products' -> 'Display'
 	 * section.
 	 *
 	 * @since 1.2.0
