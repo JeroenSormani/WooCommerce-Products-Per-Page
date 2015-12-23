@@ -135,6 +135,12 @@ class Woocommerce_Products_Per_Page {
 		// Load textdomain
 		$this->load_textdomain();
 
+		global $pagenow;
+		if ( 'plugins.php' == $pagenow ) :
+			// Plugins page
+			add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'add_plugin_action_links' ), 10, 2 );
+		endif;
+
 	}
 
 
@@ -185,6 +191,31 @@ class Woocommerce_Products_Per_Page {
 
 			update_option( 'wppp_version', $this->version );
 		endif;
+
+	}
+
+
+	/**
+	 * Plugin action links.
+	 *
+	 * Add links to the plugins.php page below the plugin name
+	 * and besides the 'activate', 'edit', 'delete' action links.
+	 *
+	 * @since 1.2.2
+	 *
+	 * @param	array	$links	List of existing links.
+	 * @param	string	$file	Name of the current plugin being looped.
+	 * @return	array			List of modified links.
+	 */
+	public function add_plugin_action_links( $links, $file ) {
+
+		if ( $file == plugin_basename( __FILE__ ) ) :
+			$links = array_merge( array(
+					'<a href="' . esc_url( admin_url( 'admin.php?page=wc-settings&tab=products&section=display#s2id_wppp_dropdown_location' ) ) . '">' . __( 'Settings', 'woocommerce-products-per-page' ) . '</a>'
+			), $links );
+		endif;
+
+		return $links;
 
 	}
 
