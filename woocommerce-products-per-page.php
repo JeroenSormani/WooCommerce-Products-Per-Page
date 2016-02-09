@@ -119,7 +119,9 @@ class Woocommerce_Products_Per_Page {
 			require_once plugin_dir_path( __FILE__ ) . 'includes/admin/class-wppp-admin-settings.php';
 			$this->admin_settings = new WPPP_Admin_Settings();
 
-		else :
+		endif;
+
+		if ( ! is_admin() || ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) :
 
 			/**
 			 * Front end
