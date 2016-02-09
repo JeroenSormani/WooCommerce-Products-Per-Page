@@ -1,0 +1,121 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Woocommerce Products Per Page v1.1.6\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-01-12 17:23+0100\n"
+"PO-Revision-Date: 2016-01-12 17:25+0100\n"
+"Last-Translator: kelderkold <keld@slotworld.dk>\n"
+"Language-Team: \n"
+"Language: da_DK\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Poedit-Basepath: ../\n"
+"X-Textdomain-Support: yes\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: woocommerce-products-per-page.php:214
+msgid "Settings"
+msgstr ""
+
+# @ woocommerce-products-per-page
+#: includes/class-wppp-front-end.php:98
+#, php-format
+msgid "%s products per page"
+msgstr "%s produkter per sida"
+
+# @ woocommerce-products-per-page
+#: includes/class-wppp-front-end.php:99
+msgid "All"
+msgstr "Alla"
+
+# @ woocommerce-products-per-page
+#: includes/admin/class-wppp-admin-settings.php:64
+msgid "Drop-down location"
+msgstr "Placering av rullgardinsmenyn"
+
+# @ woocommerce-products-per-page
+#: includes/admin/class-wppp-admin-settings.php:72
+msgid "Top"
+msgstr "Topp"
+
+# @ woocommerce-products-per-page
+#: includes/admin/class-wppp-admin-settings.php:73
+msgid "Bottom"
+msgstr "Botten"
+
+# @ woocommerce-products-per-page
+#: includes/admin/class-wppp-admin-settings.php:74
+msgid "Top/Bottom"
+msgstr "Topp/Botten"
+
+# @ woocommerce-products-per-page
+#: includes/admin/class-wppp-admin-settings.php:75
+msgid "None"
+msgstr "Ingen"
+
+# @ woocommerce-products-per-page
+#: includes/admin/class-wppp-admin-settings.php:81
+msgid "List of dropdown options"
+msgstr "Lista över rullgardinsmeny alternativ"
+
+# @ woocommerce-products-per-page
+#: includes/admin/class-wppp-admin-settings.php:82
+msgid "Seperated by spaces <em>(-1 for all products)</em>"
+msgstr "Separerade med mellanrum <em>(-1 för alla produkter)</em>"
+
+# @ woocommerce-products-per-page
+#: includes/admin/class-wppp-admin-settings.php:89
+msgid "Default products per page"
+msgstr "Standard antal produkter per sida"
+
+# @ woocommerce-products-per-page
+#: includes/admin/class-wppp-admin-settings.php:90
+msgid "-1 for all products"
+msgstr "-1 för alla produkter"
+
+# @ woocommerce-products-per-page
+#: includes/admin/class-wppp-admin-settings.php:98
+msgid "Shop columns"
+msgstr "Kolumner i butiken"
+
+# @ woocommerce-products-per-page
+#: includes/admin/class-wppp-admin-settings.php:111
+msgid "First category page"
+msgstr "Första kategorisidan"
+
+# @ woocommerce-products-per-page
+#: includes/admin/class-wppp-admin-settings.php:112
+msgid ""
+"When checked and a new number of PPP is selected, the visitor will be send "
+"to the first page of the product category"
+msgstr ""
+"Om du aktiverar detta val och ett nytt alternativ av produkter per sida "
+"väljs i rullgardinsmeny kommer besökaren att skickas till den första sidan i "
+"den valda produktkategori."
+
+# @ woocommerce-products-per-page
+#: includes/admin/class-wppp-admin-settings.php:119
+msgid "HTTP method"
+msgstr "HTTP-metod"
+
+# @ woocommerce-products-per-page
+#: includes/admin/class-wppp-admin-settings.php:120
+msgid ""
+"GET sends the products per page via the url, POST does this on the background"
+msgstr "GET skickar produkter per sida via url, POST gör detta i bakgrunden"
+
+# @ woocommerce-products-per-page
+#: includes/admin/class-wppp-admin-settings.php:126
+msgid "POST"
+msgstr "POST"
+
+# @ woocommerce-products-per-page
+#: includes/admin/class-wppp-admin-settings.php:127
+msgid "GET"
+msgstr "GET"
