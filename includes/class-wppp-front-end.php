@@ -32,10 +32,10 @@ class WPPP_Front_End {
 		endif;
 
 		// Add filter for product columns
-		add_filter( 'loop_shop_columns', array( $this, 'loop_shop_columns' ) );
+		add_filter( 'loop_shop_columns', array( $this, 'loop_shop_columns' ), 100 );
 
 		// Custom number of products per page
-		add_filter( 'loop_shop_per_page', array( $this, 'loop_shop_per_page' ) );
+		add_filter( 'loop_shop_per_page', array( $this, 'loop_shop_per_page' ), 100 );
 
 		// Get the right amount of products from the DB
 		add_action( 'woocommerce_product_query', array( $this, 'woocommerce_product_query' ), 2, 50 );
