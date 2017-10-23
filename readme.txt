@@ -1,17 +1,22 @@
 === WooCommerce Products Per Page ===
 Contributors: sormano
-Donate link: http://jeroensormani.com/donate/
-Tags: Products per page, woocommerce products, woocommerce products per page, woocommerce displayed products, woocommerce quantity products, woocommerce amount of products, woocommerce number of products, woocommerce shown products
-Requires at least: 3.8.0
-Tested up to: 4.4
-Stable tag: 1.2.2
+Tags: woocommerce, products per page, woocommerce products, woocommerce products per page, products, per page
+Requires at least: 4.0.0
+Tested up to: 4.8.2
+Stable tag: 1.2.3
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 WooCommerce Products Per Page is a easy-to-setup plugin that integrates a 'products per page' dropdown on your WooCommerce pages.
 
 == Description ==
-WooCommerce Products Per Page dropdown is easy to install and has several other product page configurations. When activated the plugin already works and has multiple settings you can set to your desire.
+WooCommerce Products Per Page is a simple plugin that adds a very valuable feature to your site; the ability for you and the customer to change the products listed per page.
+
+When your customers are shopping online they want the best experience possible, for some this means to have a small amount of products per page, while others like to have a long list of many (all) products available.
+ Using the WooCommerce Products Per Page your customers can choose how many products they want to see per page.
+
+WooCommerce Products Per Page dropdown is easy to use and has several other product page settings available.
+When activated the plugin already works and has multiple settings you can set to your desire.
 
 Options like:
 
@@ -22,17 +27,18 @@ Options like:
 
 **Look at the screenshots!**
 
-### Translations ###
+**Translations**
 - Dutch
-- French [(whoaloic)](http://profiles.wordpress.org/whoaloic)
-- Persian [(amir_tara67)](http://profiles.wordpress.org/amir_tara67)
-- Deutsch [(Michael)](http://profiles.wordpress.org/blogprofis/)
-- Danish [(Keld)](https://profiles.wordpress.org/kelderkold/)
+- French
+- Persian
+- German
+- Danish
 - Spanish
 - Brazilian
 - Russian
 - Hebrew
-
+- Swedish
+- Romanian
 
 == Installation ==
 
@@ -40,14 +46,34 @@ Options like:
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Go to the settings page to fine-tune the settings if desired
 
+== Frequently Asked Questions ==
+
+= Can this be used with shortcodes? =
+
+At this moment the plugin doesn't work with manual shortcodes that list products, only on the official WooCommerce shop page (this includes category archives etc).
+
+= The number of products per page isn't changing when using the dropdown, why? =
+
+There's a chance that your theme or another plugin is overriding the number of products per page. This functionality may need to be disabled in order for the plugin to work.
+First try to determine what is causing this, your theme or a plugin. This can be done by switching themes / enable/disable plugins to see when the dropdown starts to work.
+When determined what is causing it, it is possible to figure out what code is executed and how to disable that.
+
+Feel free to open a support thread if you need any further help. Please do note that I cannot help everyone and every theme to be compatible.
+
 == Screenshots ==
 
-1. Dropdown box on the products page
-2. Close-up of the dropdown box
-3. Settings page
+1. Dropdown box on the WooCommerce products page
+2. Close-up of the WooCommerce products per page dropdown
+3. WooCommerce Settings page
 
 
 == Changelog ==
+
+= 1.2.3 - 23/10/2017 =
+
+* [i18n] - Add Swedish translation
+* [i18n] - Add Romanian translation
+* [Fix] - Persistent cart snag where cart data gets deleted when logging out/back in
 
 = 1.2.2 - 23/12/2015 =
 
