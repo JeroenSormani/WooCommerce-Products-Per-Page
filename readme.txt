@@ -1,10 +1,9 @@
 === WooCommerce Products Per Page ===
 Contributors: sormano
-Donate link: http://jeroensormani.com/donate/
-Tags: Products per page, woocommerce products, woocommerce products per page, woocommerce displayed products, woocommerce quantity products, woocommerce amount of products, woocommerce number of products, woocommerce shown products
-Requires at least: 3.8.0
-Tested up to: 4.4
-Stable tag: 1.2.2
+Tags: woocommerce, products per page, woocommerce products, woocommerce products per page, products, per page
+Requires at least: 4.0.0
+Tested up to: 4.8.3
+Stable tag: 1.2.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -48,6 +47,16 @@ Options like:
 
 
 == Changelog ==
+
+= 1.2.4 - 07/11/2017 =
+
+* [Fix] - Default 'list of dropdown options' setting is not properly set on the settings page.
+
+= 1.2.3 - 23/10/2017 =
+
+* [i18n] - Add Swedish translation
+* [i18n] - Add Romanian translation
+* [Fix] - Persistent cart snag where cart data gets deleted when logging out/back in
 
 = 1.2.2 - 23/12/2015 =
 

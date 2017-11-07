@@ -3,7 +3,7 @@
  * Plugin Name: Woocommerce Products Per Page
  * Plugin URI: https://wordpress.org/plugins/woocommerce-products-per-page/
  * Description: Integrate a 'products per page' dropdown on your WooCommerce website! Set-up in <strong>seconds</strong>!
- * Version: 1.2.2
+ * Version: 1.2.4
  * Author: Jeroen Sormani
  * Author URI: http://jeroensormani.com
 
@@ -47,7 +47,7 @@ class Woocommerce_Products_Per_Page {
 	 * @since 1.2.0
 	 * @var string $version Plugin version number.
 	 */
-	public $version = '1.2.2';
+	public $version = '1.2.4';
 
 
 	/**
@@ -177,9 +177,13 @@ class Woocommerce_Products_Per_Page {
 
 			// Updating to 1.2.0
 			if ( version_compare( get_option( 'wppp_version', '0' ), '1.2.0', '<' ) ) :
+				$dropdown_options_default =
+					( apply_filters( 'loop_shop_columns', 4 ) * 3 ) . ' ' .
+					( apply_filters( 'loop_shop_columns', 4 ) * 6 ) . ' ' .
+					( apply_filters( 'loop_shop_columns', 4 ) * 9 );
 				$settings = get_option( 'wppp_settings', array() );
 				update_option( 'wppp_dropdown_location', isset( $settings['location'] ) ? $settings['location'] : 'topbottom'  );
-				update_option( 'wppp_dropdown_options', isset( $settings['productsPerPage'] ) ? $settings['productsPerPage'] : null  );
+				update_option( 'wppp_dropdown_options', isset( $settings['productsPerPage'] ) ? $settings['productsPerPage'] : $dropdown_options_default  );
 				update_option( 'wppp_default_ppp', isset( $settings['default_ppp'] ) ? $settings['default_ppp'] : '12'  );
 				update_option( 'wppp_shop_columns', isset( $settings['shop_columns'] ) ? $settings['shop_columns'] : '4'  );
 				update_option( 'wppp_return_to_first', isset( $settings['behaviour'] ) && '1' == $settings['behaviour'] ? 'yes' : 'no'  );
