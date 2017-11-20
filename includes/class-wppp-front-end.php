@@ -32,16 +32,13 @@ class WPPP_Front_End {
 		endif;
 
 		// Add filter for product columns
-		add_filter( 'loop_shop_columns', array( $this, 'loop_shop_columns' ) );
+		add_filter( 'loop_shop_columns', array( $this, 'loop_shop_columns' ), 100 );
 
 		// Custom number of products per page
-		add_filter( 'loop_shop_per_page', array( $this, 'loop_shop_per_page' ) );
+		add_filter( 'loop_shop_per_page', array( $this, 'loop_shop_per_page' ), 100 );
 
 		// Get the right amount of products from the DB
 		add_action( 'woocommerce_product_query', array( $this, 'woocommerce_product_query' ), 2, 50 );
-
-		// Set cookie so PPP will be saved
-		add_action( 'init', array( $this, 'set_customer_session' ), 10 );
 
 		// Check if ppp form is fired
 		add_action( 'init', array( $this, 'products_per_page_action' ) );
@@ -163,8 +160,8 @@ class WPPP_Front_End {
 			return intval( $_REQUEST['wppp_ppp'] );
 		elseif ( isset( $_REQUEST['ppp'] ) ) :
 			return intval( $_REQUEST['ppp'] );
-		elseif ( WC()->session->__isset( 'products_per_page' ) ) :
-			return intval( WC()->session->__get( 'products_per_page' ) );
+		elseif ( isset( $_COOKIE['woocommerce_products_per_page'] ) ) :
+			return $_COOKIE['woocommerce_products_per_page'];
 		else :
 			return intval( get_option( 'wppp_default_ppp', '12' ) );
 		endif;
@@ -193,22 +190,6 @@ class WPPP_Front_End {
 
 
 	/**
-	 * Initialize session.
-	 *
-	 * Set an initial session for WC 2.1.X users. Cookies are set automatically prior 2.1.X.
-	 *
-	 * @since 1.2.0
-	 */
-	public function set_customer_session() {
-
-		if ( WC()->version > '2.1' && ( ! is_admin() || defined( 'DOING_AJAX' ) ) && ! defined( 'DOING_CRON' ) ) :
-			WC()->session->set_customer_session_cookie( true );
-		endif;
-
-	}
-
-
-	/**
 	 * PPP action.
 	 *
 	 * Set the number of products per page when the customer
@@ -219,9 +200,9 @@ class WPPP_Front_End {
 	public function products_per_page_action() {
 
 		if ( isset( $_REQUEST['wppp_ppp'] ) ) :
-			WC()->session->set( 'products_per_page', intval( $_REQUEST['wppp_ppp'] ) );
+			wc_setcookie( 'woocommerce_products_per_page', intval( $_REQUEST['wppp_ppp'] ), time() + DAY_IN_SECONDS * 2, apply_filters( 'wc_session_use_secure_cookie', false ) );
 		elseif ( isset( $_REQUEST['ppp'] ) ) :
-			WC()->session->set( 'products_per_page', intval( $_REQUEST['ppp'] ) );
+			wc_setcookie( 'woocommerce_products_per_page', intval( $_REQUEST['ppp'] ), time() + DAY_IN_SECONDS * 2, apply_filters( 'wc_session_use_secure_cookie', false ) );
 		endif;
 
 	}
