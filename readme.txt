@@ -2,8 +2,8 @@
 Contributors: sormano
 Tags: woocommerce, products per page, woocommerce products, woocommerce products per page, products, per page
 Requires at least: 4.0.0
-Tested up to: 4.8.2
-Stable tag: 1.2.3
+Tested up to: 4.8.3
+Stable tag: 1.2.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -68,6 +68,10 @@ Feel free to open a support thread if you need any further help. Please do note 
 
 
 == Changelog ==
+
+= 1.2.4 - 07/11/2017 =
+
+* [Fix] - Default 'list of dropdown options' setting is not properly set on the settings page.
 
 = 1.2.3 - 23/10/2017 =
 
