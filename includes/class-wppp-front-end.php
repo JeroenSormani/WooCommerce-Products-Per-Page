@@ -35,10 +35,7 @@ class WPPP_Front_End {
 		add_filter( 'loop_shop_columns', array( $this, 'loop_shop_columns' ), 100 );
 
 		// Custom number of products per page
-		add_filter( 'loop_shop_per_page', array( $this, 'loop_shop_per_page' ), 100 );
-
-		// Get the right amount of products from the DB
-		add_action( 'woocommerce_product_query', array( $this, 'woocommerce_product_query' ), 2, 50 );
+		add_filter( 'loop_shop_per_page', array( $this, 'loop_shop_per_page' ), 100, 1 );
 
 		// Check if ppp form is fired
 		add_action( 'init', array( $this, 'products_per_page_action' ) );
@@ -91,7 +88,7 @@ class WPPP_Front_End {
 
 				foreach( $products_per_page_options as $key => $value ) :
 
-					?><option value="<?php echo esc_attr( $value ); ?>" <?php selected( $value, $this->loop_shop_per_page() ); ?>><?php
+					?><option value="<?php echo esc_attr( $value ); ?>" <?php selected( $value, $this->loop_shop_per_page( 12 ) ); ?>><?php
 						$ppp_text = apply_filters( 'wppp_ppp_text', __( '%s products per page', 'woocommerce-products-per-page' ), $value );
 						esc_html( printf( $ppp_text, $value == -1 ? __( 'All', 'woocommerce-products-per-page' ) : $value ) ); // Set to 'All' when value is -1
 					?></option><?php
@@ -154,17 +151,19 @@ class WPPP_Front_End {
 	 *
 	 * @return int Products per page.
 	 */
-	public function loop_shop_per_page() {
+	public function loop_shop_per_page( $per_page ) {
 
 		if ( isset( $_REQUEST['wppp_ppp'] ) ) :
-			return intval( $_REQUEST['wppp_ppp'] );
+			$per_page = intval( $_REQUEST['wppp_ppp'] );
 		elseif ( isset( $_REQUEST['ppp'] ) ) :
-			return intval( $_REQUEST['ppp'] );
+			$per_page = intval( $_REQUEST['ppp'] );
 		elseif ( isset( $_COOKIE['woocommerce_products_per_page'] ) ) :
-			return $_COOKIE['woocommerce_products_per_page'];
+			$per_page = $_COOKIE['woocommerce_products_per_page'];
 		else :
-			return intval( get_option( 'wppp_default_ppp', '12' ) );
+			$per_page = intval( get_option( 'wppp_default_ppp', '12' ) );
 		endif;
+
+		return $per_page;
 
 	}
 

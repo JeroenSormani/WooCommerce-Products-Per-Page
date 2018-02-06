@@ -67,15 +67,11 @@ class Woocommerce_Products_Per_Page {
 	 */
 	public function __construct() {
 
-		if ( ! function_exists( 'is_plugin_active_for_network' ) ) :
-		    require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
-		endif;
-
-		if ( ! in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) :
-			if ( ! is_plugin_active_for_network( 'woocommerce/woocommerce.php' ) ) :
-				return;
-			endif;
-		endif;
+		// Check if WooCommerce is active
+		require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
+		if ( ! is_plugin_active( 'woocommerce/woocommerce.php' ) && ! function_exists( 'WC' ) ) {
+			return;
+		}
 
 		$this->init();
 
@@ -217,7 +213,7 @@ class Woocommerce_Products_Per_Page {
 
 		if ( $file == plugin_basename( __FILE__ ) ) :
 			$links = array_merge( array(
-					'<a href="' . esc_url( admin_url( 'admin.php?page=wc-settings&tab=products&section=display#s2id_wppp_dropdown_location' ) ) . '">' . __( 'Settings', 'woocommerce-products-per-page' ) . '</a>'
+				'<a href="' . esc_url( admin_url( 'admin.php?page=wc-settings&tab=products&section=display#s2id_wppp_dropdown_location' ) ) . '">' . __( 'Settings', 'woocommerce-products-per-page' ) . '</a>'
 			), $links );
 		endif;
 
