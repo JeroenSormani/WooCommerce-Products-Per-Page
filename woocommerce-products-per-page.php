@@ -6,6 +6,7 @@
  * Version: 1.2.6
  * Author: Jeroen Sormani
  * Author URI: http://jeroensormani.com
+ * Text Domain: woocommerce-products-per-page
  *
  * WC requires at least: 3.1.0
  * WC tested up to:      3.3.0
