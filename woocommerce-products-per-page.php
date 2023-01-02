@@ -143,6 +143,12 @@ class Woocommerce_Products_Per_Page {
 			add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'add_plugin_action_links' ), 10, 2 );
 		endif;
 
+		// Declare HPOS compatibility
+		add_action( 'before_woocommerce_init', function () {
+			if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class ) ) {
+				\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true );
+			}
+		} );
 	}
 
 
