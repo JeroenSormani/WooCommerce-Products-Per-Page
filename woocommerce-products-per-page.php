@@ -8,8 +8,8 @@
  * Author URI: http://jeroensormani.com
  * Text Domain: woocommerce-products-per-page
  *
- * WC requires at least: 3.1.0
- * WC tested up to:      3.3.0
+ * WC requires at least: 6.0
+ * WC tested up to:      7.2
 
  * Copyright Jeroen Sormani
  *
