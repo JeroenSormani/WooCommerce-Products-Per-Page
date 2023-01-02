@@ -2,8 +2,8 @@
 Contributors: sormano
 Tags: woocommerce, products per page, woocommerce products, woocommerce products per page, products, per page
 Requires at least: 4.0.0
-Tested up to: 4.9.4
-Stable tag: 1.2.6
+Tested up to: 6.1
+Stable tag: 1.2.7
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -68,6 +68,11 @@ Feel free to open a support thread if you need any further help. Please do note 
 
 
 == Changelog ==
+
+= 1.2.6 - 02/01/2023 =
+
+* [Update] - Declare HPOS (High-Performance Order Storage) compatibility
+* [Update] - Bump WooCommerce Requires/Tested up to version numbers
 
 = 1.2.6 - 06/02/2018 =
 
