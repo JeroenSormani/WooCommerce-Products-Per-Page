@@ -152,15 +152,21 @@ class WPPP_Front_End {
 	 * @return int Products per page.
 	 */
 	public function loop_shop_per_page( $per_page ) {
+		$per_page_default          = (int) get_option( 'wppp_default_ppp', $per_page );
+		$products_per_page_options = explode( ' ', apply_filters( 'wppp_products_per_page', get_option( 'wppp_dropdown_options' ) ) );
 
 		if ( isset( $_REQUEST['wppp_ppp'] ) ) :
-			$per_page = intval( $_REQUEST['wppp_ppp'] );
+			$per_page = (int) $_REQUEST['wppp_ppp'];
 		elseif ( isset( $_REQUEST['ppp'] ) ) :
-			$per_page = intval( $_REQUEST['ppp'] );
+			$per_page = (int) $_REQUEST['ppp'];
 		elseif ( isset( $_COOKIE['woocommerce_products_per_page'] ) ) :
 			$per_page = $_COOKIE['woocommerce_products_per_page'];
 		else :
-			$per_page = intval( get_option( 'wppp_default_ppp', '12' ) );
+			$per_page = $per_page_default;
+		endif;
+
+		if ( ! in_array( $per_page, $products_per_page_options ) ) :
+			$per_page = $per_page_default;
 		endif;
 
 		return $per_page;
@@ -177,7 +183,6 @@ class WPPP_Front_End {
 	 *
 	 * @param	object 	$q		Existing query object.
 	 * @param	object	$class	Class object.
-	 * @return 	object 			Modified query object.
 	 */
 	public function woocommerce_product_query( $q, $class ) {
 
@@ -197,11 +202,11 @@ class WPPP_Front_End {
 	 * @since 1.2.0
 	 */
 	public function products_per_page_action() {
-
 		if ( isset( $_REQUEST['wppp_ppp'] ) ) :
-			wc_setcookie( 'woocommerce_products_per_page', intval( $_REQUEST['wppp_ppp'] ), time() + DAY_IN_SECONDS * 2, apply_filters( 'wc_session_use_secure_cookie', false ) );
+			wc_setcookie( 'woocommerce_products_per_page', (int) $_REQUEST['wppp_ppp'], time() + DAY_IN_SECONDS * 2, apply_filters( 'wc_session_use_secure_cookie', false ) );
 		elseif ( isset( $_REQUEST['ppp'] ) ) :
-			wc_setcookie( 'woocommerce_products_per_page', intval( $_REQUEST['ppp'] ), time() + DAY_IN_SECONDS * 2, apply_filters( 'wc_session_use_secure_cookie', false ) );
+			error_log( 'here' );
+			wc_setcookie( 'woocommerce_products_per_page', (int) $_REQUEST['ppp'], time() + DAY_IN_SECONDS * 2, apply_filters( 'wc_session_use_secure_cookie', false ) );
 		endif;
 
 	}
