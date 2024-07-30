@@ -1,6 +1,6 @@
 === WooCommerce Products Per Page ===
 Contributors: sormano
-Tags: woocommerce, products per page, woocommerce products, woocommerce products per page, products, per page
+Tags: woocommerce, products per page, woocommerce products, woocommerce products per page, products
 Requires at least: 4.0.0
 Tested up to: 6.5
 Stable tag: 1.2.8
