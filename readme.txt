@@ -2,8 +2,8 @@
 Contributors: sormano
 Tags: woocommerce, products per page, woocommerce products, woocommerce products per page, products
 Requires at least: 4.0.0
-Tested up to: 6.5
-Stable tag: 1.2.8
+Tested up to: 6.8
+Stable tag: 1.2.8.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -68,6 +68,10 @@ Feel free to open a support thread if you need any further help. Please do note 
 
 
 == Changelog ==
+
+= 1.2.8.1 - 15/07/2025 =
+
+* [Fix] - Unintentional error log
 
 = 1.2.8 - 30/05/2024 =
 
