@@ -205,7 +205,6 @@ class WPPP_Front_End {
 		if ( isset( $_REQUEST['wppp_ppp'] ) ) :
 			wc_setcookie( 'woocommerce_products_per_page', (int) $_REQUEST['wppp_ppp'], time() + DAY_IN_SECONDS * 2, apply_filters( 'wc_session_use_secure_cookie', false ) );
 		elseif ( isset( $_REQUEST['ppp'] ) ) :
-			error_log( 'here' );
 			wc_setcookie( 'woocommerce_products_per_page', (int) $_REQUEST['ppp'], time() + DAY_IN_SECONDS * 2, apply_filters( 'wc_session_use_secure_cookie', false ) );
 		endif;
 
