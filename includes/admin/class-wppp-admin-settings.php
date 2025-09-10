@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 /**
  * Class WPPP_Admin_Settings.
  *
- * WooCommerce Products Per Page Admin settings class.
+ * Products Per Page for WooCommerce Admin settings class.
  *
  * @class		WPPP_Admin_Settings
  * @version		1.2.0
@@ -54,7 +54,7 @@ class WPPP_Admin_Settings {
 			),
 
 			array(
-				'title' => 'WooCommerce Products Per Page',
+				'title' => 'Products Per Page for WooCommerce',
 				'type' 	=> 'title',
 				'desc' 	=> '',
 				'id' 	=> 'wppp_title'

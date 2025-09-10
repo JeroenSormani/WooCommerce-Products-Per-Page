@@ -1,6 +1,6 @@
 <?php
 /*
- * Plugin Name: Woocommerce Products Per Page
+ * Plugin Name: Products Per Page for WooCommerce
  * Plugin URI: https://wordpress.org/plugins/woocommerce-products-per-page/
  * Description: Integrate a 'products per page' dropdown on your WooCommerce website! Set-up in <strong>seconds</strong>!
  * Version: 1.2.8.1
@@ -9,20 +9,20 @@
  * Text Domain: woocommerce-products-per-page
  *
  * WC requires at least: 6.0
- * WC tested up to:      9.9
+ * WC tested up to:      10.1
 
  * Copyright Jeroen Sormani
  *
- *     This file is part of Woocommerce Products Per Page,
+ *     This file is part of Products Per Page for WooCommerce,
  *     a plugin for WordPress.
  *
- *     Woocommerce Products Per Page is free software:
+ *     Products Per Page for WooCommerce is free software:
  *     You can redistribute it and/or modify it under the terms of the
  *     GNU General Public License as published by the Free Software
  *     Foundation, either version 3 of the License, or (at your option)
  *     any later version.
  *
- *     Woocommerce Products Per Page is distributed in the hope that
+ *     Products Per Page for WooCommerce is distributed in the hope that
  *     it will be useful, but WITHOUT ANY WARRANTY; without even the
  *     implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
  *     PURPOSE. See the GNU General Public License for more details.
